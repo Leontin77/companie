@@ -56,7 +56,7 @@ export const Landing = () => {
         <div className="container">
           <div className="aboutUs-content">
             <h2 className="aboutUs-title">
-              КАК FRA ПОМОЖЕТ ВЕРНУТЬ ВАМ ДЕНЬГИ?
+              КАК FRA ПОМОЖЕТВЕРНУТЬ ВАМ ДЕНЬГИ?
             </h2>
             <div className="aboutUs-subtitle">
               Наш отдел специализируется на работе с брокерами-мошенниками,
@@ -79,7 +79,7 @@ export const Landing = () => {
                 </div>
               </li>
               <li className="aboutUs-list-item">
-                <h4>Как скоро мне вернут деньги?</h4>
+                <h4>Как скоро мне вернутденьги?</h4>
                 <div className="shortBorder"></div>
                 <div className="item-descr">
                   Как только офферта будет подписана, мы начинаем процедуру
@@ -93,7 +93,7 @@ export const Landing = () => {
         <div className="container">
           <div className="aboutUs-content">
             <h2 className="aboutUs-title">
-              КАК ПОНЯТЬ ЧТО ПОПАЛ НА БРОКЕРА МОШЕННИКА?
+              КАК ПОНЯТЬ ЧТО ПОПАЛНА БРОКЕРА МОШЕННИКА?
             </h2>
             <div className="aboutUs-subtitle">
               Опыт наших специалистов и тесные взаимосвязи с регуляторными
@@ -135,6 +135,74 @@ export const Landing = () => {
                 </div>
               </li>
             </ul>
+          </div>
+        </div>
+      </section>
+      <section className="chooseType">
+        <div className="container">
+          <div className="chooseType-content">
+            <div className="chooseType-header">
+              Получить оценку моего дела всего за пару минут
+            </div>
+            <div className="chooseType-checkboxes">
+              <h5>Выберите вид мошенничества, с которым вы столкнулись</h5>
+              <form>
+                <fieldset>
+                  <div className="checkbox-group">
+                    <input type="checkbox" id="brokerFraud" name="fraudType" />
+                    <label htmlFor="brokerFraud">Обманул брокер-мошенник</label>
+                  </div>
+
+                  <div className="checkbox-group">
+                    <input
+                      type="checkbox"
+                      id="financialPyramid"
+                      name="fraudType"
+                    />
+                    <label htmlFor="financialPyramid">
+                      Попал(а) на финансовую пирамиду
+                    </label>
+                  </div>
+
+                  <div className="checkbox-group">
+                    <input type="checkbox" id="fakeOrg" name="fraudType" />
+                    <label htmlFor="fakeOrg">
+                      Обман со стороны фиктивной организации
+                    </label>
+                  </div>
+
+                  <div className="checkbox-group">
+                    <input type="checkbox" id="cryptoFraud" name="fraudType" />
+                    <label htmlFor="cryptoFraud">
+                      Мошенничество с криптовалютами
+                    </label>
+                  </div>
+
+                  <div className="checkbox-group">
+                    <input type="checkbox" id="bankFraud" name="fraudType" />
+                    <label htmlFor="bankFraud">
+                      Обман в банке и/или кража денег с банковской карты
+                    </label>
+                  </div>
+
+                  <div className="checkbox-group">
+                    <input
+                      type="checkbox"
+                      id="pyramidScheme"
+                      name="fraudType"
+                    />
+                    <label htmlFor="pyramidScheme">
+                      Риэлторская компания - мошенник
+                    </label>
+                  </div>
+
+                  <div className="checkbox-group">
+                    <input type="checkbox" id="other" name="fraudType" />
+                    <label htmlFor="other">Другое</label>
+                  </div>
+                </fieldset>
+              </form>
+            </div>
           </div>
         </div>
       </section>
