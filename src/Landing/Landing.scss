@@ -1,5 +1,4 @@
 .wrapper {
-  background: #030304;
   height: max-content;
   position: relative;
   &-dron {
@@ -20,8 +19,8 @@
       display: grid;
       grid-template-columns: auto 1fr auto;
       max-width: 1200px;
-  margin: 0 auto;
-  // width: 100%;
+      margin: 0 auto;
+      // width: 100%;
       &_logo {
         height: 40px;
         grid-column: 1;
@@ -37,21 +36,18 @@
         &-item {
           color: white;
           cursor: pointer;
-          &.active{
+          &.active {
             color: gray;
-
           }
         }
       }
       &_text {
-       height: 40px;
-       grid-column: 3;
+        height: 40px;
+        grid-column: 3;
       }
     }
   }
 }
-
-
 
 .wrapper_header-row_navigation-item {
   color: white;
@@ -65,15 +61,179 @@
 }
 
 @media (max-width: 1024px) {
-  .wrapper_header-row{
+  .wrapper_header-row {
     padding: 20px 5%;
     grid-template-columns: auto auto;
-    &_logo{
+    &_logo {
       height: 30px;
     }
-    &_navigation{
+    &_navigation {
       gap: 10px;
       font-size: 15px;
     }
+  }
+}
+
+img {
+  display: block;
+}
+
+.hero {
+  background: linear-gradient(
+      0deg,
+      rgba(255, 255, 255, 0.75) 0%,
+      rgba(255, 255, 255, 0.75) 100%
+    ),
+    lightgray 0px -8.059px / 100% 101.707% no-repeat;
+  padding-top: 182px;
+  padding-bottom: 182px;
+  &-content {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    flex-wrap: wrap;
+    width: 100%;
+    &__description {
+      width: 875px;
+      .hero-title {
+        color: #424242;
+        font-family: "Verdana";
+        font-size: 54px;
+        font-style: normal;
+        font-weight: 700;
+        line-height: 133.687%;
+        text-transform: uppercase;
+        margin-bottom: 8px;
+      }
+      .hero-subtitle {
+        color: #353535;
+        font-family: Verdana;
+        font-size: 20px;
+        font-style: normal;
+        font-weight: 400;
+        line-height: 133.687%;
+        margin-bottom: 32px;
+      }
+      .hero-help {
+        display: flex;
+        align-items: center;
+        margin-top: 32px;
+        gap: 32px;
+        &-item {
+          display: flex;
+          width: 309px;
+          height: 97px;
+          padding: 8px 20px;
+          align-items: center;
+          gap: 16px;
+          background: #fff;
+          div {
+            color: #000;
+            font-family: Verdana;
+            font-size: 20px;
+            font-style: normal;
+            font-weight: 400;
+            line-height: 133.687%;
+            width: 201px;
+          }
+        }
+        .greenBorder {
+          border-left: 4px solid #00bfb3;
+        }
+        .blueBorder {
+          border-left: 4px solid #007fae;
+        }
+      }
+    }
+  }
+}
+
+.aboutUs {
+  padding: 72px 0;
+  background: #f0f0f1;
+  &-content {
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    width: 100%;
+  }
+  &-title {
+    color: #424242;
+    text-align: center;
+    font-family: Verdana;
+    font-size: 40px;
+    font-style: normal;
+    font-weight: 700;
+    line-height: 133.687%;
+    text-transform: uppercase;
+    max-width: 650px;
+    margin-bottom: 8px;
+  }
+  &-subtitle {
+    color: #6a6a6a;
+    text-align: center;
+    font-family: Verdana;
+    font-size: 20px;
+    font-style: normal;
+    font-weight: 400;
+    line-height: 133.687%;
+    max-width: 815px;
+    margin-bottom: 72px;
+  }
+  &-list {
+    display: flex;
+    gap: 32px;
+    justify-content: space-between;
+    align-items: center;
+    width: 100%;
+    &-item {
+      padding: 24px;
+      background: #fff;
+      max-width: 485px;
+      height: 272px;
+      display: flex;
+      flex-direction: column;
+      h4 {
+        color: #6c1d45;
+        font-family: Verdana;
+        font-size: 20px;
+        font-style: normal;
+        font-weight: 700;
+        line-height: 133.687%;
+        margin-bottom: 10px;
+      }
+      .shortBorder {
+        width: 112px;
+        height: 8px;
+        background: #6c1d45;
+        margin-bottom: 98px;
+      }
+      .item-descr {
+        color: var(--Grey-text, #6a6a6a);
+        font-family: Verdana;
+        font-size: 20px;
+        font-style: normal;
+        font-weight: 400;
+        line-height: 133.687%;
+        margin-top: auto;
+      }
+    }
+  }
+}
+
+.bg-white {
+  background: #fff;
+}
+
+.howToKnow {
+  border: 1px solid #701b45;
+  padding: 0;
+  height: auto;
+  img {
+    width: 100%;
+  }
+  &-content{
+    padding: 17px 24px 24px 24px;
   }
 }

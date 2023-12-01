@@ -1,0 +1,22 @@
+.form {
+  padding: 48px;
+  display: flex;
+  padding: 48px;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  gap: 32px;
+  background: #f1f2f2;
+  border: 1px solid #701b45;
+  height: fit-content;
+  &-input {
+    display: flex;
+    width: 372px;
+    height: 48px;
+    padding: 0px 16px;
+    align-items: center;
+    border-radius: 2px;
+    border: 1px solid #d8d8d8;
+    background: #ebebeb;
+  }
+}
