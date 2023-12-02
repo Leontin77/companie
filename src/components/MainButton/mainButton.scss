@@ -17,3 +17,8 @@
 .button:focus {
   opacity: 0.9;
 }
+
+.buttonWithRigthArrow::before{
+  content: url('../../images/rightArrow.png');
+  margin-left: 10px;
+}
