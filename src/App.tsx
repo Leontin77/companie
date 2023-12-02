@@ -7,8 +7,11 @@ import { CalculatorPage } from "CalculatorPage/CalculatorPage";
 
 export default function App() {
 
-  // return <Landing />;
+  return <Landing />;
   // return <Contact/>;
+<<<<<<< HEAD
   return <CalculatorPage/>;
+=======
+>>>>>>> 9468c00 (main page new changes)
   // return <BlackList/>;
 }

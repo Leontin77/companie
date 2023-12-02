@@ -94,6 +94,15 @@ img {
   padding-bottom: 182px;
   padding-left: 72px;
   padding-right: 72px;
+  position: relative;
+  .heroBG{
+    position: absolute;
+    z-index: -1;
+    width: 100%;
+    top: 0;
+    left: 0;
+    width: 100vw;
+  }
   &-content {
     display: flex;
     justify-content: space-between;
@@ -419,6 +428,7 @@ img {
         font-style: normal;
         font-weight: 400;
         line-height: 133.687%;
+        text-align: start;
         div {
           margin-bottom: 20px;
         }
