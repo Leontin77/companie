@@ -86,7 +86,7 @@ img {
   //   ),
   //   url("../images/heroBG.jpeg"),
   // lightgray 0px -8.059px / 100% 101.707% no-repeat;
-  background: url("../images/heroBG.jpeg");
+  background: url("../images/heroBG.png");
   background-size: cover;
   background-repeat: no-repeat;
   background-attachment: fixed;
@@ -407,6 +407,7 @@ img {
     &-item {
       border-bottom: 4px solid #ececed;
       background: #f9f9f9;
+      cursor: pointer;
       .title {
         display: flex;
         padding: 16px;
@@ -421,7 +422,7 @@ img {
         }
       }
       .description {
-        padding: 0px 75px;
+        padding: 16px 75px;
         color: #353535;
         font-family: Verdana;
         font-size: 20px;
