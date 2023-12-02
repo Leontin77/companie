@@ -1,6 +1,6 @@
 import "./Content.scss";
-import dron1main from "../images/dron1main.png";
-import dron2main from "../images/dron2main.png";
+import dron1main from "../../images/dron1main.png";
+import dron2main from "../../images/dron2main.png";
 import infoEnum from "./info.enum";
 
 interface ContentProps {

@@ -15,3 +15,38 @@ text-decoration: none;
 appearance: none;
 background: none;
 }
+
+body {
+  color: var(--Grey-text, #6A6A6A);
+  text-align: center;
+  font-family: Verdana;
+  font-size: 20px;
+  font-weight: 400;
+}
+
+img {
+  width: 100%;
+  height: auto;
+}
+.global-container {
+  max-width: 1520px;
+  margin: 0 auto;
+  padding: 0 20px;
+}
+
+@media screen and (max-width: 390px) {
+  .global-container {
+    padding: 0 24px;
+  }
+}
+@media screen and (max-width: 834px) {
+  .global-container {
+    padding: 0 48px;
+  }
+}
+@media screen and (max-width: 1440px) {
+  .global-container {
+    padding: 0 72px;
+  }
+}
+
