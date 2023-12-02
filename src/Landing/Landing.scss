@@ -84,9 +84,12 @@ img {
       rgba(255, 255, 255, 0.75) 0%,
       rgba(255, 255, 255, 0.75) 100%
     ),
+    url("../images/heroImg.svg"),
     lightgray 0px -8.059px / 100% 101.707% no-repeat;
   padding-top: 182px;
   padding-bottom: 182px;
+  padding-left: 72px;
+  padding-right: 72px;
   &-content {
     display: flex;
     justify-content: space-between;
@@ -233,7 +236,64 @@ img {
   img {
     width: 100%;
   }
-  &-content{
+  &-content {
     padding: 17px 24px 24px 24px;
+  }
+}
+
+.chooseType {
+  padding: 0 72px 72px 72px;
+  &-content {
+    width: 100%;
+  }
+  &-header {
+    background: linear-gradient(90deg, #6d1e46 0%, #925072 100%);
+    color: #fff;
+    font-family: Verdana;
+    font-size: 32px;
+    font-style: normal;
+    font-weight: 400;
+    line-height: 133.687%;
+    padding: 18px 110px;
+    display: flex;
+    align-items: center;
+  }
+  &-checkboxes {
+    background: #f0f0f1;
+    padding: 32px 110px 64px 110px;
+    h5 {
+      color: #000;
+      font-family: Verdana;
+      font-size: 26px;
+      font-style: normal;
+      font-weight: 400;
+      line-height: 133.687%;
+      margin-bottom: 32px;
+    }
+  }
+  fieldset{
+    display: flex;
+    flex-direction: column;
+    gap: 24px;
+  }
+}
+
+.checkbox-group {
+  display: flex;
+  align-items:center;
+  input {
+    width: 32px;
+    height: 32px;
+    border: 1px solid #bababa;
+    margin-right: 12px;
+  }
+  label {
+    color: var(--Grey-text, #6a6a6a);
+    text-align: center;
+    font-family: Verdana;
+    font-size: 20px;
+    font-style: normal;
+    font-weight: 400;
+    line-height: 133.687%;
   }
 }
