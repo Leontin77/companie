@@ -18,7 +18,7 @@ export const BlackList = () => {
         <main className="black-list">
             {/*<Header/>*/}
             <div className="black-list__picture">
-                <img src={headerPageImg} alt="headerPageImg"/>
+                {/*<img src={headerPageImg} alt="headerPageImg"/>*/}
             </div>
             <div className="black-list__table global-container">
                 <div className="black-list__table-title">
