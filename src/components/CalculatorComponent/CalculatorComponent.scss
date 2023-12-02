@@ -1,0 +1,271 @@
+$primary-color: #4a90e2; // Example primary color
+$background-color: #fff;
+$shadow-color: rgba(0, 0, 0, 0.1);
+$border-color: #e5adc9;
+$track-fill-color: #ccc;
+
+.CalculatorComponent {
+  width: 50%;
+  border-radius: 8px;
+
+  &_header{
+    color: #6A6A6A;
+    font-family: Verdana;
+    font-size: 20px;
+    font-weight: 400;
+    text-align: left;
+  }
+  
+  &_subHeader{
+    color: #424242;
+    font-family: Verdana;
+    font-size: 32px;
+    font-weight: 400;
+    text-align: left;
+  }
+
+  h1 {
+    color: $primary-color;
+    text-align: center;
+    margin-bottom: 20px;
+  }
+
+  .input-group {
+    display: flex;
+    flex-direction: column;
+    margin-bottom: 20px;
+
+    label {
+      height: 59px;
+      color: #424242;
+      border-left: 4px solid #701b45;
+      text-align: left;
+      display: flex;
+      justify-content: start;
+      align-items: center;
+      background-color: $background-color;
+      padding-left: 20px;
+      &.summary{
+        display: flex;
+        justify-content: space-between;
+        div{
+          width: 50%;
+        }
+
+      }
+      span {
+        font-family: Verdana;
+        font-size: 32px;
+        font-weight: 700;
+        color: #701b45;
+        margin-right: 16px;
+        &.green {
+          color: #00bfb3;
+        }
+
+        &.blue {
+          color: #003c71;
+        }
+      }
+    }
+    input[type="text"] {
+      border-radius: 4px;
+      border: 1px solid #e5adc9;
+      padding: 0 12px;
+      height: 48px;
+      margin-top: 12px;
+      background-color: $background-color;
+      &::placeholder {
+        font-family: Verdana;
+        font-size: 16px;
+        font-weight: 400;
+        line-height: 19px;
+        letter-spacing: 0em;
+        text-align: left;
+      }
+    }
+
+    input[type="range"] {
+        -webkit-appearance: none;
+        width: 100%;
+      margin: 20px 0;
+      background: $track-fill-color;
+
+      &:focus {
+        outline: none;
+      }
+
+      // Style for Chrome, Safari, and Opera
+      &::-webkit-slider-runnable-track {
+        height: 4px;
+        background: linear-gradient($primary-color, $primary-color) 0 /
+          var(--fill-percentage) 100% no-repeat $track-fill-color;
+        border-radius: 10px;
+      }
+
+      &::-webkit-slider-thumb {
+        -webkit-appearance: none;
+        appearance: none;
+        width: 25px;
+        height: 25px;
+        border-radius: 50%;
+        background: $primary-color;
+        cursor: pointer;
+        margin-top: -9px; /* Adjust thumb position to be centered */
+      }
+
+      // Style for Firefox
+      &::-moz-range-track {
+        height: 4px;
+        background: linear-gradient($primary-color, $primary-color) 0 /
+          var(--fill-percentage) 100% no-repeat $track-fill-color;
+        border-radius: 10px;
+      }
+
+      &::-moz-range-thumb {
+        width: 25px;
+        height: 25px;
+        border-radius: 50%;
+        background: $primary-color;
+        cursor: pointer;
+      }
+
+      // Style for IE
+      &::-ms-track {
+        height: 4px;
+        background: transparent;
+        border-color: transparent;
+        color: transparent;
+      }
+
+      &::-ms-fill-lower {
+          background: $primary-color;
+        border-radius: 10px;
+      }
+
+      &::-ms-fill-upper {
+        background: $track-fill-color;
+        border-radius: 10px;
+      }
+      
+      &::-ms-thumb {
+        width: 25px;
+        height: 25px;
+        background: $primary-color;
+        cursor: pointer;
+        margin-top: 0;
+      }
+      
+      &:focus::-ms-fill-lower {
+          background: $primary-color;
+      }
+
+      &:focus::-ms-fill-upper {
+        background: $track-fill-color;
+      }
+      &.green{
+        &::-webkit-slider-runnable-track {
+            height: 4px;
+            background: linear-gradient(#00bfb3, #00bfb3) 0 /
+              var(--fill-percentage) 100% no-repeat $track-fill-color;
+            border-radius: 10px;
+          }
+          &::-moz-range-track {
+            height: 4px;
+            background: linear-gradient(#00bfb3, #00bfb3) 0 /
+              var(--fill-percentage) 100% no-repeat $track-fill-color;
+            border-radius: 10px;
+          }
+          &::-webkit-slider-thumb {
+              background: #00bfb3;
+            }
+            &::-moz-range-thumb {
+              background: #00bfb3;
+            }
+      
+            &::-ms-fill-lower {
+              background: #00bfb3;
+              border-radius: 10px;
+            }
+      
+            &::-ms-fill-upper {
+              background: $track-fill-color;
+              border-radius: 10px;
+            }
+      
+            &::-ms-thumb {
+              width: 25px;
+              height: 25px;
+              background:#00bfb3;
+              cursor: pointer;
+              margin-top: 0;
+            }
+      
+            &:focus::-ms-fill-lower {
+              background: #00bfb3;
+            }
+      
+            &:focus::-ms-fill-upper {
+              background: $track-fill-color;
+            }
+      }
+    }
+    
+    .range-value {
+      text-align: center;
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      color: #6A6A6A;
+      font-size: 16px;
+      margin-top: 5px;
+    }
+  }
+
+  .probability-result {
+    text-align: center;
+    margin-top: 20px;
+    font-size: 1.2rem;
+    color: $primary-color;
+  }
+
+  .probability-value {
+    font-size: 2rem;
+    color: $primary-color;
+    font-family: Verdana;
+    font-size: 44px;
+    font-weight: 700;
+    text-align: right;
+    color: #701B45;
+    margin-right: 20px;
+  }
+
+  .calculate-button {
+    width: 100%;
+    padding: 10px;
+    border: none;
+    border-radius: 4px;
+    background-color: $primary-color;
+    color: white;
+    font-size: 1rem;
+    cursor: pointer;
+    transition: background-color 0.3s;
+    margin-top: 20px;
+
+    &:hover {
+      background-color: darken($primary-color, 10%);
+    }
+  }
+}
+
+// Media queries for responsive design
+@media (max-width: 768px) {
+  // Adjust styles for tablet
+}
+
+@media (max-width: 480px) {
+  // Adjust styles for mobile
+  .CalculatorComponent {
+    padding: 10px;
+  }
+}
