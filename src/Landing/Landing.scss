@@ -86,7 +86,7 @@ img {
   //   ),
   //   url("../images/heroBG.jpeg"),
   // lightgray 0px -8.059px / 100% 101.707% no-repeat;
-  background: url("../images/heroBG.jpeg");
+  background: url("../images/heroBG.png");
   background-size: cover;
   background-repeat: no-repeat;
   background-attachment: fixed;
@@ -94,6 +94,15 @@ img {
   padding-bottom: 182px;
   padding-left: 72px;
   padding-right: 72px;
+  position: relative;
+  .heroBG{
+    position: absolute;
+    z-index: -1;
+    width: 100%;
+    top: 0;
+    left: 0;
+    width: 100vw;
+  }
   &-content {
     display: flex;
     justify-content: space-between;
@@ -398,6 +407,7 @@ img {
     &-item {
       border-bottom: 4px solid #ececed;
       background: #f9f9f9;
+      cursor: pointer;
       .title {
         display: flex;
         padding: 16px;
@@ -412,13 +422,14 @@ img {
         }
       }
       .description {
-        padding: 0px 75px;
+        padding: 16px 75px;
         color: #353535;
         font-family: Verdana;
         font-size: 20px;
         font-style: normal;
         font-weight: 400;
         line-height: 133.687%;
+        text-align: start;
         div {
           margin-bottom: 20px;
         }

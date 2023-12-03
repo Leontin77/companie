@@ -2,6 +2,7 @@ import "./Landing.scss";
 import { useState } from "react";
 import { Header } from "components/Header/header";
 import { MainButton } from "components/MainButton/mainButton";
+import { FAQ } from "components/FAQ/faq";
 import MoneyIcon from "../images/money.png";
 import PercentageIcon from "../images/percentage.png";
 import { Form } from "components/Form/form";
@@ -25,22 +26,22 @@ import companyIcon10 from "../images/company10.png";
 import companyIcon11 from "../images/company11.png";
 import companyIcon12 from "../images/company12.png";
 import companyIcon13 from "../images/company13.png";
-import plusIcon from "../images/plus.png";
-import minusIcon from "../images/minus.png";
 
 
-// import bgImage from "../images/";
+
+
+import heroBG from '../images/heroBG.png';
 
 export interface ILandingProps {}
 
 export const Landing = () => {
-  const [openFAQ,  setOpenFAQ] = useState(false);
+  // const [openFAQ,  setOpenFAQ] = useState(false);
 
   return (
     <main className="wrapper">
       <Header />
       <section className="hero">
-        {/* <img src={bgImage} alt="" /> */}
+        <img className="heroBG" src={heroBG} alt="" />
         <div className="container">
           <div className="hero-content">
             <div className="hero-content__description">
@@ -329,7 +330,7 @@ export const Landing = () => {
           </div>
         </div>
       </section>
-      <section className="faq">
+      {/* <section className="faq">
         <div className="container">
           <div className="faq-content">
             <h2 className="aboutUs-title">FAQ</h2>
@@ -388,7 +389,8 @@ export const Landing = () => {
             </ul>
           </div>
         </div>
-      </section>
+      </section> */}
+      <FAQ/>
     </main>
   );
 };
