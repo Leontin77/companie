@@ -14,11 +14,24 @@ export interface ILandingProps {
 
 export const BlackList = () => {
     console.log("data", data)
-        return (
+    return (
         <main className="black-list">
             {/*<Header/>*/}
             <div className="black-list__picture">
-                {/*<img src={headerPageImg} alt="headerPageImg"/>*/}
+                <div className="global-container">
+                    <div className="black-list__picture-info">
+                        <div className="title">
+                            ЧЕРНЫЙ СПИСОК
+                        </div>
+                        <div className="divider"></div>
+                        <div className="subtitle">
+                            За опыт работы нашей организации у нас сформировалась наработанная база брокеров-мошенников. Она
+                            постоянно обновляется, так как мошенники быстро закрывают старые компании по которым их вычислили и
+                            открывают новые. Все эти данные наша организация передает в FCA для формирования полного списка,
+                            которым в конечном итоге мы также пользуемся.
+                        </div>
+                    </div>
+                </div>
             </div>
             <div className="black-list__table global-container">
                 <div className="black-list__table-title">
@@ -33,13 +46,13 @@ export const BlackList = () => {
                         <div>СТАТУС</div>
                     </li>
                     {data && data.map((one: any) => one &&
-                    <li>
-                        <div>{one[0]}</div>
-                        <div>
-                            {one[1].map((el: any) => <p>{el}</p>)}
-                        </div>
-                        <div>{one[2]}</div>
-                    </li>
+                        <li>
+                            <div>{one[0]}</div>
+                            <div>
+                                {one[1].map((el: any) => <p>{el}</p>)}
+                            </div>
+                            <div>{one[2]}</div>
+                        </li>
                     )}
                 </ul>
             </div>

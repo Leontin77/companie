@@ -7,7 +7,7 @@ import {Form} from "components/Form/form";
 export const LeaveRequest = () => {
   return (
       <div className="leave-request-wrapper">
-          <div className="leave-request global-container frame35">
+          <div className="leave-request global-container">
               <div className="leave-request__content">
                   <div className="leave-request__content-header">
                       <div className="subtitle">Оставь заявку</div>

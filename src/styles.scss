@@ -34,19 +34,28 @@ img {
   padding: 0 20px;
 }
 
-@media screen and (max-width: 390px) {
-  .global-container {
-    padding: 0 24px;
-  }
-}
-@media screen and (max-width: 834px) {
-  .global-container {
-    padding: 0 48px;
-  }
-}
+
 @media screen and (max-width: 1440px) {
   .global-container {
     padding: 0 72px;
   }
 }
+
+@media screen and (max-width: 834px) {
+  .global-container {
+    padding: 0 48px;
+  }
+}
+
+@media screen and (max-width: 390px) {
+  .global-container {
+    padding: 0 24px;
+  }
+}
+
+
+
+
+
+
 
