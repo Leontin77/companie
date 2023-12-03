@@ -5,23 +5,31 @@ $border-color: #e5adc9;
 $track-fill-color: #ccc;
 
 .CalculatorComponent {
-  width: 50%;
+  width: 55%;
   border-radius: 8px;
+  @media screen and (max-width: 1024px) {
+    width: 100%;
+  }
 
-  &_header{
-    color: #6A6A6A;
+  &_header {
+    color: #6a6a6a;
     font-family: Verdana;
     font-size: 20px;
     font-weight: 400;
     text-align: left;
+    margin-bottom: 8px;
   }
-  
-  &_subHeader{
+
+  &_subHeader {
     color: #424242;
     font-family: Verdana;
     font-size: 32px;
     font-weight: 400;
     text-align: left;
+    margin-bottom: 59px;
+    @media screen and (max-width: 1024px) {
+      font-size: 26px;
+    }
   }
 
   h1 {
@@ -36,7 +44,7 @@ $track-fill-color: #ccc;
     margin-bottom: 20px;
 
     label {
-      height: 59px;
+      height: auto;
       color: #424242;
       border-left: 4px solid #701b45;
       text-align: left;
@@ -45,13 +53,22 @@ $track-fill-color: #ccc;
       align-items: center;
       background-color: $background-color;
       padding-left: 20px;
-      &.summary{
+      font-family: Verdana;
+      font-size: 20px;
+      font-weight: 400;
+      color: #424242;
+      @media screen and (max-width: 1024px) {
+        font-size: 16px;
+        padding: 8px;
+      }
+
+      &.summary {
         display: flex;
         justify-content: space-between;
-        div{
-          width: 50%;
-        }
 
+        div {
+          // width: 50%;
+        }
       }
       span {
         font-family: Verdana;
@@ -86,9 +103,9 @@ $track-fill-color: #ccc;
     }
 
     input[type="range"] {
-        -webkit-appearance: none;
-        width: 100%;
-      margin: 20px 0;
+      -webkit-appearance: none;
+      width: 100%;
+      margin: 30px 0 10px;
       background: $track-fill-color;
 
       &:focus {
@@ -139,7 +156,7 @@ $track-fill-color: #ccc;
       }
 
       &::-ms-fill-lower {
-          background: $primary-color;
+        background: $primary-color;
         border-radius: 10px;
       }
 
@@ -147,7 +164,7 @@ $track-fill-color: #ccc;
         background: $track-fill-color;
         border-radius: 10px;
       }
-      
+
       &::-ms-thumb {
         width: 25px;
         height: 25px;
@@ -155,68 +172,68 @@ $track-fill-color: #ccc;
         cursor: pointer;
         margin-top: 0;
       }
-      
+
       &:focus::-ms-fill-lower {
-          background: $primary-color;
+        background: $primary-color;
       }
 
       &:focus::-ms-fill-upper {
         background: $track-fill-color;
       }
-      &.green{
+      &.green {
         &::-webkit-slider-runnable-track {
-            height: 4px;
-            background: linear-gradient(#00bfb3, #00bfb3) 0 /
-              var(--fill-percentage) 100% no-repeat $track-fill-color;
-            border-radius: 10px;
-          }
-          &::-moz-range-track {
-            height: 4px;
-            background: linear-gradient(#00bfb3, #00bfb3) 0 /
-              var(--fill-percentage) 100% no-repeat $track-fill-color;
-            border-radius: 10px;
-          }
-          &::-webkit-slider-thumb {
-              background: #00bfb3;
-            }
-            &::-moz-range-thumb {
-              background: #00bfb3;
-            }
-      
-            &::-ms-fill-lower {
-              background: #00bfb3;
-              border-radius: 10px;
-            }
-      
-            &::-ms-fill-upper {
-              background: $track-fill-color;
-              border-radius: 10px;
-            }
-      
-            &::-ms-thumb {
-              width: 25px;
-              height: 25px;
-              background:#00bfb3;
-              cursor: pointer;
-              margin-top: 0;
-            }
-      
-            &:focus::-ms-fill-lower {
-              background: #00bfb3;
-            }
-      
-            &:focus::-ms-fill-upper {
-              background: $track-fill-color;
-            }
+          height: 4px;
+          background: linear-gradient(#00bfb3, #00bfb3) 0 /
+            var(--fill-percentage) 100% no-repeat $track-fill-color;
+          border-radius: 10px;
+        }
+        &::-moz-range-track {
+          height: 4px;
+          background: linear-gradient(#00bfb3, #00bfb3) 0 /
+            var(--fill-percentage) 100% no-repeat $track-fill-color;
+          border-radius: 10px;
+        }
+        &::-webkit-slider-thumb {
+          background: #00bfb3;
+        }
+        &::-moz-range-thumb {
+          background: #00bfb3;
+        }
+
+        &::-ms-fill-lower {
+          background: #00bfb3;
+          border-radius: 10px;
+        }
+
+        &::-ms-fill-upper {
+          background: $track-fill-color;
+          border-radius: 10px;
+        }
+
+        &::-ms-thumb {
+          width: 25px;
+          height: 25px;
+          background: #00bfb3;
+          cursor: pointer;
+          margin-top: 0;
+        }
+
+        &:focus::-ms-fill-lower {
+          background: #00bfb3;
+        }
+
+        &:focus::-ms-fill-upper {
+          background: $track-fill-color;
+        }
       }
     }
-    
+
     .range-value {
       text-align: center;
       display: flex;
       justify-content: space-between;
       align-items: center;
-      color: #6A6A6A;
+      color: #6a6a6a;
       font-size: 16px;
       margin-top: 5px;
     }
@@ -230,14 +247,17 @@ $track-fill-color: #ccc;
   }
 
   .probability-value {
-    font-size: 2rem;
     color: $primary-color;
     font-family: Verdana;
     font-size: 44px;
     font-weight: 700;
     text-align: right;
-    color: #701B45;
+    color: #701b45;
     margin-right: 20px;
+    width: 30%;
+    @media screen and (max-width: 1024px) {
+      font-size: 32px;
+    }
   }
 
   .calculate-button {
@@ -255,17 +275,5 @@ $track-fill-color: #ccc;
     &:hover {
       background-color: darken($primary-color, 10%);
     }
-  }
-}
-
-// Media queries for responsive design
-@media (max-width: 768px) {
-  // Adjust styles for tablet
-}
-
-@media (max-width: 480px) {
-  // Adjust styles for mobile
-  .CalculatorComponent {
-    padding: 10px;
   }
 }

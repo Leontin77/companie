@@ -10,7 +10,7 @@ export default function App() {
 
   // return <Landing />;
   // return <Contact/>;
-  // return <CalculatorPage/>;
+  return <CalculatorPage/>;
   // return <BlackList/>;
-  return <Review/>;
+  // return <Review/>;
 }

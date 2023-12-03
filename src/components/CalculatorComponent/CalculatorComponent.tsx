@@ -110,7 +110,7 @@ const CalculatorComponent: React.FC = () => {
           />
           <div className="range-value">
             <span>1000 $</span>
-            <span>100000 $</span>
+            <span>100000 $ +</span>
           </div>
           {/* <div className="range-value">${calculatorState.amountLost}</div> */}
         </div>
@@ -148,7 +148,7 @@ const CalculatorComponent: React.FC = () => {
             Вероятность возврата ваших денег, %
             </div>
              <div className="probability-value">
-            {calculatorState.probability.toFixed(1)}%
+            {Number(calculatorState.probability.toFixed(1)) * 1}%
           </div>
           </label>
          
