@@ -6,7 +6,6 @@ interface MainButtonProps {
   width: string | number;
   background: string;
   className?: string;
-
 }
 
 export const MainButton: React.FC<MainButtonProps> = ({ text, width, background, className }) => {

@@ -1,8 +1,15 @@
 import "./form.scss";
 import { MainButton } from "components/MainButton/mainButton";
-export const Form = () => {
+
+interface FormProps {
+  border? : string;
+}
+export const Form:  React.FC<FormProps> = ({border}) => {
+  const borderStyle = {
+    border: border
+  };
   return (
-    <form className="form">
+    <form className="form" style={borderStyle}>
       <input className="form-input" type="text" placeholder="Имя и фамилия" />
       <input className="form-input" type="number" placeholder="Контактный номер"/>
       <input className="form-input" type="text" placeholder="Email" />

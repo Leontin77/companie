@@ -1,0 +1,282 @@
+import { useState, useEffect } from "react";
+import "./rating.scss";
+
+export const Raiting = () => {
+  const [step, setStep] = useState(1);
+  const [openDropDownMenu, setOpenDropDownMenu] = useState(false);
+  const [selectedCheckbox1, setSelectedCheckbox1] = useState<any>();
+  const [selectedCheckbox2, setSelectedCheckbox2] = useState<any>();
+  const [selectedCheckbox3, setSelectedCheckbox3] = useState<any>();
+
+  const [type, setType] = useState("");
+  const [duration, setDuration] = useState("");
+  const [amount, setAmount] = useState("");
+  const [brokerName, setBrokerName] = useState("");
+  const [fullName, setFullName] = useState("");
+  const [contactNumber, setContactNumber] = useState("");
+  const [email, setEmail] = useState("");
+  const [lossAmount, setLossAmount] = useState("");
+
+  const checkboxOptions = [
+    { id: "brokerFraud", label: "Обманул брокер-мошенник" },
+    { id: "financialPyramid", label: "Попал(а) на финансовую пирамиду" },
+    { id: "fakeOrg", label: "Обман со стороны фиктивной организации" },
+    { id: "cryptoFraud", label: "Мошенничество с криптовалютами" },
+    {
+      id: "bankFraud",
+      label: "Обман в банке и/или кража денег с банковской карты",
+    },
+    { id: "pyramidScheme", label: "Риэлторская компания - мошенник" },
+    { id: "other", label: "Другое" },
+  ];
+
+  const checkboxOptionsStep2 = [
+    { id: "duration1", label: "от 1 дня до 3 месяцев" },
+    { id: "duration2", label: "от 3 месяцев до 6 месяцев" },
+    { id: "duration3", label: "от 6 месяцев до 1 года" },
+    { id: "duration4", label: "от 1 года до 2 лет" },
+    { id: "duration5", label: "от 2 лет до 3 лет" },
+    { id: "duration6", label: "более 3 лет" },
+  ];
+
+  const checkboxOptionsStep3 = [
+    { id: "money1", label: "до 1000" },
+    { id: "money2", label: "от 1000 до 5000" },
+    { id: "money3", label: "от 5000 до 10000" },
+    { id: "money1", label: "свыше 10000" },
+  ];
+
+  const handleSubmit = () => {
+    const submissionData = {
+      fraudType: type,
+      fraudDuration: duration,
+      fraudAmount: amount,
+      brokerName: brokerName,
+      fullName: fullName,
+      contactNumber: contactNumber,
+      email: email,
+      lossAmount: lossAmount,
+    };
+    console.log("submissionData", submissionData);
+    setType("");
+    setDuration("");
+    setAmount("");
+    setBrokerName("");
+    setFullName("");
+    setContactNumber("");
+    setEmail("");
+    setLossAmount("");
+    setSelectedCheckbox1(null);
+    setSelectedCheckbox2(null);
+    setSelectedCheckbox3(null);
+  };
+
+  const handleCheckboxChange = (id: any) => {
+    if (step === 1) {
+      setSelectedCheckbox1(id);
+    }
+    if (step === 2) {
+      setSelectedCheckbox2(id);
+    }
+    if (step === 3) {
+      setSelectedCheckbox3(id);
+    }
+  };
+
+  const nextStep = () => {
+    if (step === 6) {
+      setStep(1);
+    } else {
+      setStep(step + 1);
+    }
+  };
+
+  return (
+    <section className="chooseType">
+      <div className="container">
+        <div className="chooseType-content">
+          <div className="chooseType-header">
+            Получить оценку моего дела всего за пару минут
+          </div>
+          <div className="chooseType-checkboxes">
+            {step === 1 && (
+              <h5>Выберите вид мошенничества, с которым вы столкнулись</h5>
+            )}
+            {step === 2 && (
+              <h5>Как много времени прошло с момента кражи ваших денег?</h5>
+            )}
+            {step === 3 && <h5>Какую сумму денег у вас украли? ($)</h5>}
+            {step === 4 && (
+              <h5>
+                Укажите название брокера/ организации укравшей ваши деньги?
+              </h5>
+            )}
+            {step === 5 && (
+              <h5>
+                Ваш случай имеет все шансы на успешный исход, оставьте заявку на
+                бесплатную консультацию и наши специалисты предложат вам все
+                доступные варианты  возврата ваших денег.
+              </h5>
+            )}
+            {step === 6 && <h5>Хочу получить полный анализ моей ситуации!</h5>}
+
+            <form>
+              {step === 1 && (
+                <fieldset>
+                  {checkboxOptions.map((option, index) => (
+                    <div key={option.id} className="checkbox-group">
+                      <input
+                        type="checkbox"
+                        id={`option${index}`}
+                        checked={selectedCheckbox1 === `option${index}`}
+                        name="fraudType"
+                        onClick={() => setType(option.label)}
+                        onChange={() => handleCheckboxChange(`option${index}`)}
+                        className={
+                          selectedCheckbox1 === `option${index}`
+                            ? "choosenOption"
+                            : ""
+                        }
+                      />
+                      <label htmlFor={option.id}>{option.label}</label>
+                    </div>
+                  ))}
+                </fieldset>
+              )}
+              {step === 2 && (
+                <fieldset>
+                  {checkboxOptionsStep2.map((option, index) => (
+                    <div key={option.id} className="checkbox-group">
+                      <input
+                        type="checkbox"
+                        id={`option${index}`}
+                        checked={selectedCheckbox2 === `option${index}`}
+                        name="fraudDuration"
+                        onClick={() => setDuration(option.label)}
+                        onChange={() => handleCheckboxChange(`option${index}`)}
+                        className={
+                          selectedCheckbox2 === `option${index}`
+                            ? "choosenOption"
+                            : ""
+                        }
+                      />
+                      <label htmlFor={option.id}>{option.label}</label>
+                    </div>
+                  ))}
+                </fieldset>
+              )}
+              {step === 3 && (
+                <fieldset>
+                  {checkboxOptionsStep3.map((option, index) => (
+                    <div key={index} className="checkbox-group">
+                      <input
+                        type="checkbox"
+                        id={`option${index}`}
+                        checked={selectedCheckbox3 === `option${index}`}
+                        name="fraudAmount"
+                        onClick={() => setAmount(option.label)}
+                        onChange={() => handleCheckboxChange(`option${index}`)}
+                        className={
+                          selectedCheckbox3 === `option${index}`
+                            ? "choosenOption"
+                            : ""
+                        }
+                      />
+                      <label htmlFor={option.id}>{option.label}</label>
+                    </div>
+                  ))}
+                </fieldset>
+              )}
+              {step === 4 && (
+                <fieldset>
+                  <input
+                    className="chooseType-input"
+                    type="text"
+                    placeholder="Ваш ответ"
+                    onChange={(e) => setBrokerName(e.target.value)}
+                  />
+                </fieldset>
+              )}
+              {step === 5 && (
+                <h2 className="chooseType-percent">{`Вероятность возврата: > 96%.`}</h2>
+              )}
+              {step === 6 && (
+                <div className="chooseType-box">
+                  <input
+                    className="chooseType-box-input"
+                    type="text"
+                    placeholder="Имя и фамилия"
+                    onChange={(e) => setFullName(e.target.value)}
+                  />
+                  <input
+                    className="chooseType-box-input"
+                    type="text"
+                    placeholder="Контактный номер"
+                    onChange={(e) => setContactNumber(e.target.value)}
+                  />
+                  <input
+                    className="chooseType-box-input"
+                    type="text"
+                    placeholder="Email"
+                    onChange={(e) => setEmail(e.target.value)}
+                  />
+                  <div
+                    className="chooseType-box-input dropDown"
+                    onClick={() => setOpenDropDownMenu(!openDropDownMenu)}
+                  >
+                    {!lossAmount ? (
+                      <span>Укажите сумму потерянных средств</span>
+                    ) : (
+                      <span>{lossAmount}</span>
+                    )}
+                    {openDropDownMenu && (
+                      <div className="openDropdown">
+                        {checkboxOptionsStep3.map((option, index) => (
+                          <div
+                            className="openDropdown-label"
+                            onClick={() => {
+                              setLossAmount(option.label);
+                              setOpenDropDownMenu(!openDropDownMenu);
+                            }}
+                          >
+                            <span>{option.label}</span>
+                          </div>
+                        ))}
+                      </div>
+                    )}
+                  </div>
+                </div>
+              )}
+              <div className="chooseType-buttons">
+                <button
+                  type="button"
+                  className={`button withLeftArrow ${step === 1 && "disabled"}`}
+                  disabled={step === 1 && true}
+                  onClick={() => setStep(step - 1)}
+                >
+                  Вернуться
+                </button>
+                <button
+                  type="button"
+                  className="button withRightArrow"
+                  onClick={() => {
+                    if (step === 6) {
+                      handleSubmit();
+                    }
+                    nextStep();
+                  }}
+                >
+                  {step === 6 ? (
+                    <span>Получить анализ</span>
+                  ) : (
+                    <span>Продолжить</span>
+                  )}
+                </button>
+              </div>
+            </form>
+          </div>
+        </div>
+      </div>
+    </section>
+  );
+};

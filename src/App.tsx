@@ -8,7 +8,7 @@ import { Review } from "Review/Review";
 
 export default function App() {
 
-  // return <Landing />;
+  return <Landing />;
   // return <Contact/>;
   return <CalculatorPage/>;
   // return <BlackList/>;
