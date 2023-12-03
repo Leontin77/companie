@@ -42,6 +42,43 @@
       width: 100%;
     }
   }
+  .slick-slider {
+    width: 100%;
+    margin-bottom: 72px;
+    .slick-list {
+      height: 376px;;
+    }
+    .slick-slide {
+      div:first-child {
+        width: calc(80%);
+      }
+    }
+  }
+  .review__user {
+    display: flex;
+    width: 528px;
+    height: auto;
+    min-height: 376px;
+    padding: 32px;
+    flex-direction: column;
+    background: #EEF7FF;
+    gap: 25px;
+    margin: 0 10px;
+    .review__user-title {
+      display: flex;
+      gap: 16px;
+      align-items: center;
+      font-weight: 700;
+      margin-bottom: 24px;
+      img {
+        width: 72px;
+        height: 72px;
+      }
+    }
+    .review__user-text {
+      text-align: left;
+    }
+  }
 }
 
 @media (max-width: 1440px) {
@@ -52,6 +89,16 @@
       height: auto;
       padding-top: 24px;
       padding-bottom: 24px;
+    }
+    .slick-slider {
+      .slick-list {
+        height: auto;
+      }
+      .slick-slide {
+        div:first-child {
+          width: calc(75%);
+        }
+      }
     }
   }
 }
@@ -66,6 +113,37 @@
       padding-bottom: 36px;
       display: flex;
       align-items: flex-start;
+    }
+    .review__user {
+      min-height: 250px;
+    }
+    .slick-slider {
+      .slick-list {
+        height: auto;
+      }
+      .slick-slide {
+        div:first-child {
+          width: calc(100vw - 85px) !important;
+        }
+      }
+    }
+  }
+}
+
+@media (max-width: 550px) {
+  .review {
+    .review__user {
+      min-height: 350px;
+    }
+    .slick-slider {
+      .slick-list {
+        height: auto;
+      }
+      .slick-slide {
+        div:first-child {
+          width: calc(100vw - 85px) !important;
+        }
+      }
     }
   }
 }
@@ -85,6 +163,19 @@
       }
       .review__picture-info {
         padding: 24px;
+      }
+    }
+    .review__user {
+      min-height: 420px;
+    }
+    .slick-slider {
+      .slick-list {
+        height: auto;
+      }
+      .slick-slide {
+        div:first-child {
+          width: calc(100vw - 85px) !important;
+        }
       }
     }
   }
