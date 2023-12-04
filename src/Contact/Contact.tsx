@@ -15,7 +15,7 @@ export interface ILandingProps {
 export const Contact = () => {
         return (
         <main className="contacts">
-            <Header/>
+            {/* <Header/> */}
             <div className="contacts__picture">
                 <div className="global-container">
                     <div className="contacts__picture-info">

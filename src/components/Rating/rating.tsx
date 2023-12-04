@@ -20,10 +20,8 @@ export const Raiting = () => {
   const [lossAmount, setLossAmount] = useState("");
   const [probability, setProbability] = useState(94);
 
-
   const [amountNumber, setAmountNumber] = useState(0);
   const [duretionNumber, setDurationNumber] = useState(0);
-
 
   const checkboxOptions = [
     { id: "brokerFraud", label: "Обманул брокер-мошенник" },
@@ -41,7 +39,7 @@ export const Raiting = () => {
   const checkboxOptionsStep2 = [
     { id: "duration1", label: "от 1 дня до 3 месяцев", value: 50 },
     { id: "duration2", label: "от 3 месяцев до 6 месяцев", value: 120 },
-    { id: "duration3", label: "от 6 месяцев до 1 года",  value: 280 },
+    { id: "duration3", label: "от 6 месяцев до 1 года", value: 280 },
     { id: "duration4", label: "от 1 года до 2 лет", value: 120 },
     { id: "duration5", label: "от 2 лет до 3 лет", value: 550 },
     { id: "duration6", label: "более 3 лет", value: 1300 },
@@ -80,8 +78,7 @@ export const Raiting = () => {
   // };
   let IPData: any = JSON.parse(localStorage?.getItem("IPData"));
   const handleSubmit = () => {
-
-       const submissionData = {
+    const submissionData = {
       fraudType: type,
       fraudDuration: duration,
       fraudAmount: amount,
@@ -107,9 +104,8 @@ export const Raiting = () => {
       `Телефон: ${submissionData.contactNumber}\n` +
       `Сумма утраченных средств: ${submissionData.fraudAmount}\n` +
       `Имя Фамилия: ${submissionData.fullName}\n` +
-      `Email: ${submissionData.email}\n` 
-      // `Телефон: ${data.phone}\n` +
-
+      `Email: ${submissionData.email}\n`;
+    // `Телефон: ${data.phone}\n` +
 
     console.log("@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@", message);
     if (localStorage?.getItem("Id")) {
@@ -137,20 +133,20 @@ export const Raiting = () => {
     setProbability(calculateProbability(amountNumber, duretionNumber));
   }, []);
 
-  const calculateProbability = (amountLost: number, daysSinceTransfer: number): number => {
-
+  const calculateProbability = (
+    amountLost: number,
+    daysSinceTransfer: number
+  ): number => {
     const minProbability = 87;
     const maxProbability = 96;
-    const maxDays = 1825; 
+    const maxDays = 1825;
     const maxAmount = 100000;
     const daysFactor = (maxDays - daysSinceTransfer) / maxDays;
-    const amountFactor = (amountLost) / maxAmount;
+    const amountFactor = amountLost / maxAmount;
     const weightedProbability = (daysFactor + amountFactor) / 2;
-  
 
     const probabilityRange = maxProbability - minProbability;
-    const probability = minProbability + (probabilityRange * weightedProbability);
-  
+    const probability = minProbability + probabilityRange * weightedProbability;
 
     return Math.min(Math.max(probability, minProbability), maxProbability);
   };
@@ -221,19 +217,29 @@ export const Raiting = () => {
                 <fieldset>
                   {checkboxOptions.map((option, index) => (
                     <div key={option.id} className="checkbox-group">
-                      <input
-                        type="checkbox"
-                        id={`option${index}`}
-                        checked={selectedCheckbox1 === `option${index}`}
-                        name="fraudType"
-                        onClick={() => setType(option.label)}
-                        onChange={() => handleCheckboxChange(`option${index}`)}
+                      <div
                         className={
                           selectedCheckbox1 === `option${index}`
                             ? "choosenOption"
-                            : ""
+                            : "notCheckedOption"
                         }
-                      />
+                      >
+                        <input
+                          type="checkbox"
+                          id={`option${index}`}
+                          checked={selectedCheckbox1 === `option${index}`}
+                          name="fraudType"
+                          onClick={() => setType(option.label)}
+                          onChange={() =>
+                            handleCheckboxChange(`option${index}`)
+                          }
+                          className={
+                            selectedCheckbox1 === `option${index}`
+                              ? "choosenOptionInput"
+                              : ""
+                          }
+                        />
+                      </div>
                       <label htmlFor={option.id}>{option.label}</label>
                     </div>
                   ))}
@@ -243,22 +249,32 @@ export const Raiting = () => {
                 <fieldset>
                   {checkboxOptionsStep2.map((option, index) => (
                     <div key={option.id} className="checkbox-group">
-                      <input
-                        type="checkbox"
-                        id={`option${index}`}
-                        checked={selectedCheckbox2 === `option${index}`}
-                        name="fraudDuration"
-                        onClick={() => {
-                          setDuration(option.label)
-                          setAmountNumber(option.value)
-                        }}
-                        onChange={() => handleCheckboxChange(`option${index}`)}
+                      <div
                         className={
                           selectedCheckbox2 === `option${index}`
                             ? "choosenOption"
-                            : ""
+                            : "notCheckedOption"
                         }
-                      />
+                      >
+                        <input
+                          type="checkbox"
+                          id={`option${index}`}
+                          checked={selectedCheckbox2 === `option${index}`}
+                          name="fraudDuration"
+                          onClick={() => {
+                            setDuration(option.label);
+                            setAmountNumber(option.value);
+                          }}
+                          onChange={() =>
+                            handleCheckboxChange(`option${index}`)
+                          }
+                          className={
+                            selectedCheckbox2 === `option${index}`
+                              ? "choosenOptionInput"
+                              : ""
+                          }
+                        />
+                      </div>
                       <label htmlFor={option.id}>{option.label}</label>
                     </div>
                   ))}
@@ -268,21 +284,32 @@ export const Raiting = () => {
                 <fieldset>
                   {checkboxOptionsStep3.map((option, index) => (
                     <div key={index} className="checkbox-group">
-                      <input
-                        type="checkbox"
-                        id={`option${index}`}
-                        checked={selectedCheckbox3 === `option${index}`}
-                        name="fraudAmount"
-                        onClick={() => {
-                          setAmount(option.label)
-                          setAmountNumber(option.value)}}
-                        onChange={() => handleCheckboxChange(`option${index}`)}
+                      <div
                         className={
                           selectedCheckbox3 === `option${index}`
                             ? "choosenOption"
-                            : ""
+                            : "notCheckedOption"
                         }
-                      />
+                      >
+                        <input
+                          type="checkbox"
+                          id={`option${index}`}
+                          checked={selectedCheckbox3 === `option${index}`}
+                          name="fraudAmount"
+                          onClick={() => {
+                            setAmount(option.label);
+                            setAmountNumber(option.value);
+                          }}
+                          onChange={() =>
+                            handleCheckboxChange(`option${index}`)
+                          }
+                          className={
+                            selectedCheckbox3 === `option${index}`
+                              ? "choosenOptionInput"
+                              : ""
+                          }
+                        />
+                      </div>
                       <label htmlFor={option.id}>{option.label}</label>
                     </div>
                   ))}
@@ -299,7 +326,9 @@ export const Raiting = () => {
                 </fieldset>
               )}
               {step === 5 && (
-                <h2 className="chooseType-percent">{`Вероятность возврата: > ${probability.toFixed(0)}%.`}</h2>
+                <h2 className="chooseType-percent">{`Вероятность возврата: > ${probability.toFixed(
+                  0
+                )}%.`}</h2>
               )}
               {step === 6 && (
                 <div className="chooseType-box">
@@ -333,7 +362,7 @@ export const Raiting = () => {
                     onClick={() => setOpenDropDownMenu(!openDropDownMenu)}
                   >
                     {!lossAmount ? (
-                      <span>Укажите сумму потерянных средств</span>
+                      <span className="dropDown-title">Укажите сумму потерянных средств</span>
                     ) : (
                       <span>{lossAmount}</span>
                     )}
@@ -356,57 +385,58 @@ export const Raiting = () => {
                 </div>
               )}
               <div className="chooseType-buttons">
-                {screenWidth > 1024 ? 
-                <button
-                  type="button"
-                  className={`button withLeftArrow ${step === 1 && "disabled"}`}
-                  disabled={step === 1 && true}
-                  onClick={() => setStep(step - 1)}
-                >
-                  Вернуться
-                </button>
-                : 
-                <button
-                  type="button"
-                  className={`button withLeftArrow ${step === 1 && "disabled"}`}
-                  disabled={step === 1 && true}
-                  onClick={() => setStep(step - 1)}
-                >
-                </button>}
-                {screenWidth > 1024 ? 
-                <button
-                  type="button"
-                  className="button withRightArrow"
-                  onClick={() => {
-                    if (step === 6) {
-                      handleSubmit();
-                    }
-                    nextStep();
-                  }}
-                >
-                  {step === 6 ? (
-                    <span>Получить анализ</span>
-                  ) : (
-                    <span>Продолжить</span>
-                  )}
-                </button>
-                :
-                <button
-                  type="button"
-                  className="button withRightArrow"
-                  onClick={() => {
-                    if (step === 6) {
-                      handleSubmit();
-                    }
-                    nextStep();
-                  }}
-                >
-                  {step === 6 ? (
-                    <span></span>
-                  ) : (
-                    <span></span>
-                  )}
-                </button>}
+                {screenWidth > 1024 ? (
+                  <button
+                    type="button"
+                    className={`button withLeftArrow ${
+                      step === 1 && "disabled"
+                    }`}
+                    disabled={step === 1 && true}
+                    onClick={() => setStep(step - 1)}
+                  >
+                    Вернуться
+                  </button>
+                ) : (
+                  <button
+                    type="button"
+                    className={`button withLeftArrow ${
+                      step === 1 && "disabled"
+                    }`}
+                    disabled={step === 1 && true}
+                    onClick={() => setStep(step - 1)}
+                  ></button>
+                )}
+                {screenWidth > 1024 ? (
+                  <button
+                    type="button"
+                    className="button withRightArrow"
+                    onClick={() => {
+                      if (step === 6) {
+                        handleSubmit();
+                      }
+                      nextStep();
+                    }}
+                  >
+                    {step === 6 ? (
+                      <span>Получить анализ</span>
+                    ) : (
+                      <span>Продолжить</span>
+                    )}
+                  </button>
+                ) : (
+                  <button
+                    type="button"
+                    className="button withRightArrow"
+                    onClick={() => {
+                      if (step === 6) {
+                        handleSubmit();
+                      }
+                      nextStep();
+                    }}
+                  >
+                    {step === 6 ? <span></span> : <span></span>}
+                  </button>
+                )}
               </div>
             </form>
           </div>

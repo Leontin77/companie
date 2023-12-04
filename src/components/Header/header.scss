@@ -20,8 +20,10 @@ img {
   display: flex;
   border-bottom: 1px solid #701b45;
   background: #fff;
-
-  &-logo {
+  position: fixed;
+  z-index: 10;
+  width: 100%;
+  &-logo{
     // margin-right: 176px;
   }
 }

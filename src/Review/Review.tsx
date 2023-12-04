@@ -68,7 +68,7 @@ export const Review = () => {
 
     return (
         <main className="review">
-            <Header/>
+            {/* <Header/> */}
             <div className="review__picture">
                 <div className="global-container">
                     <div className="review__picture-info">
