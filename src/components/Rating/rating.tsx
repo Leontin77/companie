@@ -1,9 +1,11 @@
 import { useState, useEffect } from "react";
 import "react-phone-number-input/style.css";
 import PhoneInput from "react-phone-number-input";
+import { useNavigate } from 'react-router-dom';
 import "./rating.scss";
 
 export const Raiting = () => {
+  const navigate = useNavigate();
   const [step, setStep] = useState(1);
   const [openDropDownMenu, setOpenDropDownMenu] = useState(false);
   const [selectedCheckbox1, setSelectedCheckbox1] = useState<any>();
@@ -127,6 +129,7 @@ export const Raiting = () => {
     //     }
     //   })
     //   .catch((error: any) => console.error(error));
+    navigate('/thankyou')
   };
 
   useEffect(() => {

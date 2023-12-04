@@ -7,6 +7,8 @@ import {yupResolver} from "@hookform/resolvers/yup";
 import PhoneInput from "react-phone-number-input";
 import {isValidPhoneNumber} from "react-phone-number-input";
 import axios from "axios";
+import { useNavigate } from 'react-router-dom';
+
 
 declare global {
     interface Window {
@@ -52,6 +54,8 @@ export const Form = () => {
         resolver: yupResolver(validationSchema) as any,
     });
 
+    const navigate = useNavigate();
+
     let IPData: any = JSON.parse(localStorage?.getItem("IPData"));
 
     const onSubmit = (data: FormData) => {
@@ -90,6 +94,7 @@ export const Form = () => {
         //     }
         //   })
         //   .catch((error: any) => console.error(error));
+        navigate('/thankyou')
     };
 
     return (
