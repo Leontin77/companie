@@ -8,7 +8,8 @@ import { Contact } from "./Contact/Contact";
 import { CalculatorPage } from "./CalculatorPage/CalculatorPage";
 import { Review } from "./Review/Review";
 import { Politics } from "Politics/Politics";
-import {ThankYou} from "ThankYou/ThankYou";
+import { ThankYou } from "ThankYou/ThankYou";
+import { Header } from "components/Header/header";
 
 export default function App() {
   useEffect(() => {
@@ -24,15 +25,17 @@ export default function App() {
             usersCity: data.city,
             usersCountry: data.country_name,
             phoneCode: data.country_calling_code,
-            countryCode: data.country_code
+            countryCode: data.country_code,
           })
         );
       });
   }, []);
 
   return (
-    <Router>
+    <>
+      <Router>
         {/* Routes define the mapping of path to component */}
+        <Header />
         <Routes>
           <Route path="/contact" element={<Contact />} />
           <Route path="/calculator" element={<CalculatorPage />} />
@@ -42,6 +45,7 @@ export default function App() {
           <Route path="/thankyou" element={<ThankYou />} />
           <Route path="/" element={<Landing />} />
         </Routes>
-    </Router>
+      </Router>
+    </>
   );
 }

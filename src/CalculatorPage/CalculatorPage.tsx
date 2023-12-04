@@ -18,7 +18,7 @@ const gridContent = [
 export const CalculatorPage = () => {
   return (
     <main className="calculatorPage">
-      <Header />
+      {/* <Header /> */}
       <div className="calculatorPage_container global-container">
         {/* <img className="calculatorPage_picture" src={headerPageImg}></img> */}
         {/* <div className="calculatorPage_picture"> */}

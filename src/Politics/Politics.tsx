@@ -6,7 +6,7 @@ import { Footer } from "components/Footer/Footer";
 export const Politics = () => {
   return (
     <main className="politics">
-      <Header />
+      {/* <Header /> */}
       <div className="politics_cont global-container">
         <div className="politics_cont-header">
           ПОЛИТИКА ОБРАБОТКИ ПЕРСОНАЛЬНЫХ ДАННЫХ
