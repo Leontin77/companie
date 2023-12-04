@@ -53,7 +53,7 @@ export const Review = () => {
         speed: 3000,
         slidesToShow: 3,
         slidesToScroll: 1,
-        arrows: true,
+        arrows: false,
         autoplay: true,
         responsive: [
             {
