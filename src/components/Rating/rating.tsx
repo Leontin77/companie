@@ -1,4 +1,6 @@
 import { useState, useEffect } from "react";
+import "react-phone-number-input/style.css";
+import PhoneInput from "react-phone-number-input";
 import "./rating.scss";
 
 export const Raiting = () => {
@@ -16,6 +18,12 @@ export const Raiting = () => {
   const [contactNumber, setContactNumber] = useState("");
   const [email, setEmail] = useState("");
   const [lossAmount, setLossAmount] = useState("");
+  const [probability, setProbability] = useState(94);
+
+
+  const [amountNumber, setAmountNumber] = useState(0);
+  const [duretionNumber, setDurationNumber] = useState(0);
+
 
   const checkboxOptions = [
     { id: "brokerFraud", label: "Обманул брокер-мошенник" },
@@ -31,23 +39,49 @@ export const Raiting = () => {
   ];
 
   const checkboxOptionsStep2 = [
-    { id: "duration1", label: "от 1 дня до 3 месяцев" },
-    { id: "duration2", label: "от 3 месяцев до 6 месяцев" },
-    { id: "duration3", label: "от 6 месяцев до 1 года" },
-    { id: "duration4", label: "от 1 года до 2 лет" },
-    { id: "duration5", label: "от 2 лет до 3 лет" },
-    { id: "duration6", label: "более 3 лет" },
+    { id: "duration1", label: "от 1 дня до 3 месяцев", value: 50 },
+    { id: "duration2", label: "от 3 месяцев до 6 месяцев", value: 120 },
+    { id: "duration3", label: "от 6 месяцев до 1 года",  value: 280 },
+    { id: "duration4", label: "от 1 года до 2 лет", value: 120 },
+    { id: "duration5", label: "от 2 лет до 3 лет", value: 550 },
+    { id: "duration6", label: "более 3 лет", value: 1300 },
   ];
 
   const checkboxOptionsStep3 = [
-    { id: "money1", label: "до 1000" },
-    { id: "money2", label: "от 1000 до 5000" },
-    { id: "money3", label: "от 5000 до 10000" },
-    { id: "money1", label: "свыше 10000" },
+    { id: "money1", label: "до 1000", value: 1000 },
+    { id: "money2", label: "от 1000 до 5000", value: 5000 },
+    { id: "money3", label: "от 5000 до 10000", value: 10000 },
+    { id: "money1", label: "свыше 10000", value: 100000 },
   ];
 
+  // const handleSubmit = () => {
+  //   const submissionData = {
+  //     fraudType: type,
+  //     fraudDuration: duration,
+  //     fraudAmount: amount,
+  //     brokerName: brokerName,
+  //     fullName: fullName,
+  //     contactNumber: contactNumber,
+  //     email: email,
+  //     lossAmount: lossAmount,
+  //   };
+  //   console.log("submissionData", submissionData);
+  //   setType("");
+  //   setDuration(0);
+  //   setAmount("");
+  //   setBrokerName("");
+  //   setFullName("");
+  //   setContactNumber("");
+  //   setEmail("");
+  //   setLossAmount(0);
+  //   setSelectedCheckbox1(null);
+  //   setSelectedCheckbox2(null);
+  //   setSelectedCheckbox3(null);
+  // };
+  let IPData: any = JSON.parse(localStorage?.getItem("IPData"));
   const handleSubmit = () => {
-    const submissionData = {
+
+       const submissionData = {
       fraudType: type,
       fraudDuration: duration,
       fraudAmount: amount,
@@ -57,18 +91,68 @@ export const Raiting = () => {
       email: email,
       lossAmount: lossAmount,
     };
-    console.log("submissionData", submissionData);
-    setType("");
-    setDuration("");
-    setAmount("");
-    setBrokerName("");
-    setFullName("");
-    setContactNumber("");
-    setEmail("");
-    setLossAmount("");
-    setSelectedCheckbox1(null);
-    setSelectedCheckbox2(null);
-    setSelectedCheckbox3(null);
+    const message =
+      `Новая заявка со страницы: ${window.location.href}\n\n` +
+      "Данные формы: \n" +
+      "IP: " +
+      IPData?.usersIP +
+      " " +
+      IPData?.usersCountry +
+      " " +
+      IPData?.usersCity +
+      "\n" +
+      `Тип мошенничества: ${submissionData.fraudType}\n` +
+      `Когда случилось: ${submissionData.fraudDuration}\n` +
+      `Назва Брокера: ${submissionData.brokerName}\n` +
+      `Телефон: ${submissionData.contactNumber}\n` +
+      `Сумма утраченных средств: ${submissionData.fraudAmount}\n` +
+      `Имя Фамилия: ${submissionData.fullName}\n` +
+      `Email: ${submissionData.email}\n` 
+      // `Телефон: ${data.phone}\n` +
+
+
+    console.log("@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@", message);
+    if (localStorage?.getItem("Id")) {
+      window.fbq("init", localStorage?.getItem("Id"));
+      window.fbq("track", "Lead");
+    }
+
+    //         axios.post("https://api.telegram.org/bot6312131562:AAErXlBgmHzS8fZVrhG6bq_U4_eA3a59VZc/sendMessage", {
+    //   chat_id: "-1001647056777",
+    //   text: message
+    // })
+    //   .then((response: any) => {
+    //     if (localStorage.getItem('Id')) {
+    //             window.fbq('init', localStorage?.getItem('Id'));
+    //             window.fbq('track', 'Lead');
+    //       console.log('2222222222');
+    //     } else {
+    //       console.log('33333333333');
+    //     }
+    //   })
+    //   .catch((error: any) => console.error(error));
+  };
+
+  useEffect(() => {
+    setProbability(calculateProbability(amountNumber, duretionNumber));
+  }, []);
+
+  const calculateProbability = (amountLost: number, daysSinceTransfer: number): number => {
+
+    const minProbability = 87;
+    const maxProbability = 96;
+    const maxDays = 1825; 
+    const maxAmount = 100000;
+    const daysFactor = (maxDays - daysSinceTransfer) / maxDays;
+    const amountFactor = (amountLost) / maxAmount;
+    const weightedProbability = (daysFactor + amountFactor) / 2;
+  
+
+    const probabilityRange = maxProbability - minProbability;
+    const probability = minProbability + (probabilityRange * weightedProbability);
+  
+
+    return Math.min(Math.max(probability, minProbability), maxProbability);
   };
 
   const handleCheckboxChange = (id: any) => {
@@ -152,7 +236,10 @@ export const Raiting = () => {
                         id={`option${index}`}
                         checked={selectedCheckbox2 === `option${index}`}
                         name="fraudDuration"
-                        onClick={() => setDuration(option.label)}
+                        onClick={() => {
+                          setDuration(option.label)
+                          setAmountNumber(option.value)
+                        }}
                         onChange={() => handleCheckboxChange(`option${index}`)}
                         className={
                           selectedCheckbox2 === `option${index}`
@@ -174,7 +261,9 @@ export const Raiting = () => {
                         id={`option${index}`}
                         checked={selectedCheckbox3 === `option${index}`}
                         name="fraudAmount"
-                        onClick={() => setAmount(option.label)}
+                        onClick={() => {
+                          setAmount(option.label)
+                          setAmountNumber(option.value)}}
                         onChange={() => handleCheckboxChange(`option${index}`)}
                         className={
                           selectedCheckbox3 === `option${index}`
@@ -198,7 +287,7 @@ export const Raiting = () => {
                 </fieldset>
               )}
               {step === 5 && (
-                <h2 className="chooseType-percent">{`Вероятность возврата: > 96%.`}</h2>
+                <h2 className="chooseType-percent">{`Вероятность возврата: > ${probability.toFixed(0)}%.`}</h2>
               )}
               {step === 6 && (
                 <div className="chooseType-box">
@@ -208,12 +297,19 @@ export const Raiting = () => {
                     placeholder="Имя и фамилия"
                     onChange={(e) => setFullName(e.target.value)}
                   />
-                  <input
+                  <PhoneInput
+                    defaultCountry={IPData?.countryCode || "PL"}
+                    placeholder="Enter phone number"
+                    value={IPData?.phoneCode}
+                    onChange={(e) => setContactNumber(e)}
+                    className="chooseType-box-input"
+                  />
+                  {/* <input
                     className="chooseType-box-input"
                     type="text"
                     placeholder="Контактный номер"
                     onChange={(e) => setContactNumber(e.target.value)}
-                  />
+                  /> */}
                   <input
                     className="chooseType-box-input"
                     type="text"

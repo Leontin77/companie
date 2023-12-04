@@ -39,8 +39,6 @@ const CalculatorComponent: React.FC = () => {
     return Math.min(Math.max(probability, minProbability), maxProbability);
   };
   
-  // ...
-  
   const handleInputChange = (e: React.ChangeEvent<HTMLInputElement>) => {
     const { name, value } = e.target;
     const valueAsNumber = Number(value);
