@@ -22,3 +22,17 @@
   content: url('../../images/rightArrow.png');
   margin-left: 10px;
 }
+
+@media screen and (max-width: 1024px) {
+  .button {
+    font-size: 18px;
+    max-width: 350px;
+  }
+}
+
+@media (min-width: 800px) and (max-width:1024px) {
+  .button {
+    font-size: 18px;
+    max-width: 650px;
+  }
+}

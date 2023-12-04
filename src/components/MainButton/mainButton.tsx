@@ -2,9 +2,9 @@ import React from "react";
 import "./mainButton.scss";
 
 interface MainButtonProps {
-  text: string;
-  width: string | number;
-  background: string;
+  text?: string;
+  width?: string | number;
+  background?: string;
   className?: string;
 }
 

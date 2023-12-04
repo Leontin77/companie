@@ -155,6 +155,18 @@ export const Raiting = () => {
     return Math.min(Math.max(probability, minProbability), maxProbability);
   };
 
+  const [screenWidth, setScreenWidth] = useState(window.innerWidth);
+
+  useEffect(() => {
+    const handleResize = () => {
+      setScreenWidth(window.innerWidth);
+    };
+    window.addEventListener("resize", handleResize);
+    return () => {
+      window.removeEventListener("resize", handleResize);
+    };
+  }, []);
+
   const handleCheckboxChange = (id: any) => {
     if (step === 1) {
       setSelectedCheckbox1(id);
@@ -344,6 +356,7 @@ export const Raiting = () => {
                 </div>
               )}
               <div className="chooseType-buttons">
+                {screenWidth > 1024 ? 
                 <button
                   type="button"
                   className={`button withLeftArrow ${step === 1 && "disabled"}`}
@@ -352,6 +365,15 @@ export const Raiting = () => {
                 >
                   Вернуться
                 </button>
+                : 
+                <button
+                  type="button"
+                  className={`button withLeftArrow ${step === 1 && "disabled"}`}
+                  disabled={step === 1 && true}
+                  onClick={() => setStep(step - 1)}
+                >
+                </button>}
+                {screenWidth > 1024 ? 
                 <button
                   type="button"
                   className="button withRightArrow"
@@ -368,6 +390,23 @@ export const Raiting = () => {
                     <span>Продолжить</span>
                   )}
                 </button>
+                :
+                <button
+                  type="button"
+                  className="button withRightArrow"
+                  onClick={() => {
+                    if (step === 6) {
+                      handleSubmit();
+                    }
+                    nextStep();
+                  }}
+                >
+                  {step === 6 ? (
+                    <span></span>
+                  ) : (
+                    <span></span>
+                  )}
+                </button>}
               </div>
             </form>
           </div>

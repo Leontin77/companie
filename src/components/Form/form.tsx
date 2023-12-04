@@ -166,7 +166,7 @@ export const Form = () => {
       </div>
       <MainButton
         text="Получить консультацию"
-        width="389px"
+        // width="389px"
         background="#701b45"
       />
     </form>

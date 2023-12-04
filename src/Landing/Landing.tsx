@@ -30,13 +30,23 @@ import { LeaveRequest } from "components/LeaveRequest/LeaveRequest";
 import { Footer } from "components/Footer/Footer";
 import { Raiting } from "components/Rating/rating";
 
-import heroBG from "../images/heroBG.png";
 import { useLocation } from "react-router-dom";
 
 export interface ILandingProps {}
 
 export const Landing = () => {
   // const [openFAQ,  setOpenFAQ] = useState(false);
+  const [screenWidth, setScreenWidth] = useState(window.innerWidth);
+
+  useEffect(() => {
+    const handleResize = () => {
+      setScreenWidth(window.innerWidth);
+    };
+    window.addEventListener("resize", handleResize);
+    return () => {
+      window.removeEventListener("resize", handleResize);
+    };
+  }, []);
 
   const location = useLocation();
 
@@ -74,7 +84,7 @@ export const Landing = () => {
               <MainButton
                 className=""
                 text="Оформить заявление на возврат денег!"
-                width="650px"
+                width={screenWidth > 1024 ? '650px' : '100%'}
                 background="#701b45"
               />
               <ul className="hero-help">
@@ -178,88 +188,6 @@ export const Landing = () => {
           </div>
         </div>
       </section>
-      {/* <section className="chooseType"> id="quiz"
-        <div className="container">
-          <div className="chooseType-content">
-            <div className="chooseType-header">
-              Получить оценку моего дела всего за пару минут
-            </div>
-            <div className="chooseType-checkboxes">
-              <h5>Выберите вид мошенничества, с которым вы столкнулись</h5>
-              <form>
-                <fieldset>
-                  <div className="checkbox-group">
-                    <input type="checkbox" id="brokerFraud" name="fraudType" />
-                    <label htmlFor="brokerFraud">Обманул брокер-мошенник</label>
-                  </div>
-
-                  <div className="checkbox-group">
-                    <input
-                      type="checkbox"
-                      id="financialPyramid"
-                      name="fraudType"
-                    />
-                    <label htmlFor="financialPyramid">
-                      Попал(а) на финансовую пирамиду
-                    </label>
-                  </div>
-
-                  <div className="checkbox-group">
-                    <input type="checkbox" id="fakeOrg" name="fraudType" />
-                    <label htmlFor="fakeOrg">
-                      Обман со стороны фиктивной организации
-                    </label>
-                  </div>
-
-                  <div className="checkbox-group">
-                    <input type="checkbox" id="cryptoFraud" name="fraudType" />
-                    <label htmlFor="cryptoFraud">
-                      Мошенничество с криптовалютами
-                    </label>
-                  </div>
-
-                  <div className="checkbox-group">
-                    <input type="checkbox" id="bankFraud" name="fraudType" />
-                    <label htmlFor="bankFraud">
-                      Обман в банке и/или кража денег с банковской карты
-                    </label>
-                  </div>
-
-                  <div className="checkbox-group">
-                    <input
-                      type="checkbox"
-                      id="pyramidScheme"
-                      name="fraudType"
-                    />
-                    <label htmlFor="pyramidScheme">
-                      Риэлторская компания - мошенник
-                    </label>
-                  </div>
-
-                  <div className="checkbox-group">
-                    <input type="checkbox" id="other" name="fraudType" />
-                    <label htmlFor="other">Другое</label>
-                  </div>
-                </fieldset>
-                <div className="chooseType-buttons">
-                  <MainButton
-                    className="buttonWithLeftArrow"
-                    text="Вернуться"
-                    width="205px"
-                    background="#C3C3C3"
-                  />
-                  <MainButton
-                    className="buttonWithRigthArrow"
-                    text="Продолжить"
-                    width="225px"
-                    background="#701b45"
-                  />
-                </div>
-              </form>
-            </div>
-          </div>
-        </div>
-      </section> */}
       <Raiting/>
       <section className="ourAdvantages">
         <div className="container">
@@ -326,19 +254,19 @@ export const Landing = () => {
           <div className="logos-content">
             <h2 className="aboutUs-title">МЫ УЖЕ ПОМОГЛИ ВЕРНУТЬ ДЕНЬГИ ОТ:</h2>
             <div className="logos-img">
-              <img src={companyIcon1} alt="" />
-              <img src={companyIcon2} alt="" />
-              <img src={companyIcon3} alt="" />
-              <img src={companyIcon4} alt="" />
-              <img src={companyIcon5} alt="" />
-              <img src={companyIcon6} alt="" />
-              <img src={companyIcon7} alt="" />
-              <img src={companyIcon8} alt="" />
-              <img src={companyIcon9} alt="" />
-              <img src={companyIcon10} alt="" />
-              <img src={companyIcon11} alt="" />
-              <img src={companyIcon12} alt="" />
-              <img src={companyIcon13} alt="" />
+              <img className="imgLogo" src={companyIcon1} alt="" />
+              <img className="imgLogo" src={companyIcon2} alt="" />
+              <img className="imgLogo" src={companyIcon3} alt="" />
+              <img className="imgLogo" src={companyIcon4} alt="" />
+              <img className="imgLogo" src={companyIcon5} alt="" />
+              <img className="imgLogo" src={companyIcon6} alt="" />
+              <img className="imgLogo" src={companyIcon7} alt="" />
+              <img className="imgLogo" src={companyIcon8} alt="" />
+              <img className="imgLogo" src={companyIcon9} alt="" />
+              <img className="imgLogo" src={companyIcon10} alt="" />
+              <img className="imgLogo" src={companyIcon11} alt="" />
+              <img className="imgLogo" src={companyIcon12} alt="" />
+              <img className="imgLogo" src={companyIcon13} alt="" />
             </div>
           </div>
         </div>

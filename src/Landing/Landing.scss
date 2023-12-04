@@ -87,7 +87,7 @@ img {
   padding-left: 72px;
   padding-right: 72px;
   position: relative;
-  .heroBG{
+  .heroBG {
     position: absolute;
     z-index: -1;
     width: 100%;
@@ -196,10 +196,11 @@ img {
     justify-content: space-between;
     align-items: center;
     width: 100%;
+    flex-wrap: wrap;
     &-item {
       padding: 24px;
       background: #fff;
-      max-width: 485px;
+      max-width: 430px;
       height: 272px;
       display: flex;
       flex-direction: column;
@@ -211,6 +212,7 @@ img {
         font-weight: 700;
         line-height: 133.687%;
         margin-bottom: 10px;
+        text-align: start;
       }
       .shortBorder {
         width: 112px;
@@ -334,6 +336,7 @@ img {
   &-list {
     display: flex;
     flex-wrap: wrap;
+    justify-content: center;
     gap: 32px;
     &-item {
       padding: 24px;
@@ -343,6 +346,7 @@ img {
       display: flex;
       flex-direction: column;
       justify-content: space-between;
+      text-align: left;
       .title {
         display: flex;
         align-items: center;
@@ -430,5 +434,191 @@ img {
         }
       }
     }
+  }
+}
+
+@media screen and (max-width: 1024px) {
+  .hero {
+    padding: 48px 0px;
+    background: url("../images/heroBGmobile.jpg");
+    background-size: cover;
+    background-repeat: no-repeat;
+    &-content {
+      width: 100%;
+      display: flex;
+      justify-content: center;
+      align-items: center;
+      &__description {
+        width: 100%;
+        display: flex;
+        justify-content: center;
+        align-items: center;
+        flex-direction: column;
+        .hero-title {
+          max-width: 350px;
+          font-family: Verdana;
+          font-size: 40px;
+          font-style: normal;
+          font-weight: 700;
+          line-height: 133.687%; /* 53.475px */
+          text-transform: uppercase;
+        }
+        .hero-subtitle {
+          color: #353535;
+          font-family: Verdana;
+          font-size: 20px;
+          font-style: normal;
+          font-weight: 400;
+          line-height: 133.687%;
+          max-width: 350px;
+        }
+        .hero-help {
+          margin-bottom: 48px;
+          display: flex;
+          justify-content: center;
+          align-items: center;
+          max-width: 350px;
+        }
+        .hero-help-item {
+          width: 161px;
+          height: auto;
+          flex-direction: column;
+          padding: 8px 20px;
+          display: block;
+          height: 191px;
+        }
+      }
+    }
+  }
+  .hero-content__description .hero-help-item div {
+    font-family: Verdana;
+    font-size: 20px;
+    font-style: normal;
+    font-weight: 400;
+    line-height: 133.687%;
+    margin-top: 16px;
+    display: inline;
+  }
+
+  .aboutUs {
+    padding: 48px 24px;
+  }
+  .aboutUs-title {
+    width: 342px;
+    font-size: 29px;
+
+  }
+  .aboutUs-list-item {
+    height: auto;
+    .shortBorder {
+      margin: 24px 0;
+    }
+    .item-descr {
+      text-align: start;
+    }
+  }
+  .chooseType {
+    padding: 0 24px 48px 24px;
+    &-header {
+      padding: 18px 24px;
+      text-align: left;
+      font-size: 26px;
+    }
+    &-checkboxes {
+      padding: 32px 24px 64px 32px;
+      h5 {
+        font-family: Verdana;
+        font-size: 20px;
+        font-style: normal;
+        font-weight: 400;
+        line-height: 133.687%;
+        margin-bottom: 32px;
+      }
+    }
+  }
+  .checkbox-group label {
+    text-align: left;
+    font-family: Verdana;
+    font-size: 16px;
+    font-style: normal;
+    font-weight: 400;
+    line-height: normal;
+    width: 100%;
+  }
+  .ourAdvantages{
+    padding: 48px 24px;
+  }
+
+  .ourAdvantages-list-item .title span{
+    text-align: left;
+  }
+  .ourAdvantages-list-item div{
+    text-align:left;
+  }
+  .ourAdvantages-list-item{
+    height: auto;
+  }
+  .logos{
+    padding-top: 48px 24px;
+  }
+  .logos-img{
+    padding: 0;
+    gap: 20px;
+    .imgLogo {
+      width: 124px;
+    }
+  }
+  .faq {
+    padding-left: 24px;
+    padding-right: 24px;
+  }
+  .faq-list-item .title span {
+    text-align: left;
+  }
+  .faq-list-item {
+    margin-bottom: 16px;
+  }
+  .faq-list-item{
+    margin-top: 32px;
+    .description {
+      padding: 16px;
+    }
+  }
+}
+
+@media (min-width: 800px) and (max-width:1024px) {
+  .hero-content__description{
+    .hero-title {
+      max-width: 650px;
+    }
+    .hero-subtitle {
+      max-width: 650px;
+    }
+    .hero-help {
+      max-width: 650px;
+    }
+    .hero-help-item {
+      width: 49%;
+    }
+  }
+  .aboutUs-list-item {
+    width: 100%;
+    max-width: 100%;
+  }
+  .howToKnow img {
+    height: 227px;
+  }
+  .ourAdvantages-list-item {
+    width: 100%;  
+    max-width: 100%;
+  }
+}
+
+@media (min-width: 1024px) and (max-width: 1550px) {
+  .aboutUs-list-item {
+    max-width: 345px;
+  }
+  .ourAdvantages-list-item{
+    max-width: 550px;
   }
 }
