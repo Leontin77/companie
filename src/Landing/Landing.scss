@@ -193,15 +193,15 @@ img {
   &-list {
     display: flex;
     gap: 32px;
-    justify-content: space-between;
-    align-items: center;
+    justify-content: center;
+    align-items: stretch;
     width: 100%;
     flex-wrap: wrap;
     &-item {
       padding: 24px;
       background: #fff;
       max-width: 430px;
-      height: 272px;
+      // height: 272px;
       display: flex;
       flex-direction: column;
       h4 {
@@ -297,12 +297,17 @@ img {
 .checkbox-group {
   display: flex;
   align-items: center;
-  input {
-    cursor: pointer;
+  .notCheckedOption{
     width: 32px;
     height: 32px;
     border: 1px solid #bababa;
     margin-right: 12px;
+  }
+  input {
+    cursor: pointer;
+    width: 100%;
+    height: 100%;
+    border: 1px solid #bababa;
   }
   label {
     color: var(--Grey-text, #6a6a6a);
@@ -485,7 +490,7 @@ img {
           flex-direction: column;
           padding: 8px 20px;
           display: block;
-          height: 191px;
+          height: 200px;
         }
       }
     }

@@ -85,18 +85,34 @@
     line-height: normal;
     position: relative;
     cursor: pointer;
-  }
+    &-title:after {
+        content: url('../../images/poligon.png');
+        margin-left:10px;
+      }
+    }
 }
 
 .choosenOption {
-  background-color: #701b45;
+  // background-color: #701b45;
   position: relative;
   display: flex;
   justify-content: center;
   align-items: center;
+  border: 1px solid #d8d8d8;
+  padding: 4px;
+  width: 32px;
+  height: 32px;
+  padding: 4px;
+  margin-right: 12px;
   &::after {
     // content: url('../../images/checked.png')
   }
+}
+
+.choosenOptionInput{
+  width: 100%;
+  height: 100%;
+  background-color: #701b45;
 }
 
 .openDropdown {
@@ -120,5 +136,18 @@
 .openDropdown-label:focus {
     background-color: #701b45;
     color: #fff;
+}
+
+@media screen and (max-width: 1024px) {
+  .chooseType-box {
+    padding: 24px;
+  }
+  .chooseType-percent {
+    font-size: 29px;
+  }
+  .openDropdown{
+    width: 100%;
+    top: 60px;
+  }
 }
 
