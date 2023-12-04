@@ -2,13 +2,14 @@
   display: flex;
   flex-wrap: wrap;
   width: 100%;
-  background-color: #F0F0F1;
+  background-color: #f0f0f1;
   .header {
     width: 100%;
   }
   .thank-you__picture {
     width: 100%;
-    height: 827px;
+    // height: 827px;
+    height: 86vh;
     position: relative;
     background-image: url("../images/contacts/back.png");
     background-repeat: no-repeat;
@@ -32,7 +33,7 @@
     .divider {
       width: 112px;
       height: 8px;
-      background: #6C1D45;
+      background: #6c1d45;
     }
     .thank-you__picture-info {
       text-align: left;
@@ -65,7 +66,9 @@
   .thank-you {
     .thank-you__picture {
       background-image: url("../images/contacts/backMedium.png");
-      height: 968px;
+      // height: 968px;
+      height: 86vh;
+
       align-items: end;
       padding: 0 0 48px 0;
       .global-container {
@@ -110,7 +113,9 @@
   .thank-you {
     .thank-you__picture {
       background-image: url("../images/contacts/backPhone.png");
-      height: 968px;
+      // height: 968px;
+      height: 86vh;
+
       align-items: end;
       padding: 0 0 48px 0;
       .title {
