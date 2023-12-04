@@ -216,7 +216,10 @@ export const Raiting = () => {
               {step === 1 && (
                 <fieldset>
                   {checkboxOptions.map((option, index) => (
-                    <div key={option.id} className="checkbox-group">
+                    <div key={option.id} className="checkbox-group" onClick={() => {
+                      setType(option.label)
+                      handleCheckboxChange(`option${index}`)
+                      }}>
                       <div
                         className={
                           selectedCheckbox1 === `option${index}`
@@ -248,7 +251,10 @@ export const Raiting = () => {
               {step === 2 && (
                 <fieldset>
                   {checkboxOptionsStep2.map((option, index) => (
-                    <div key={option.id} className="checkbox-group">
+                    <div key={option.id} className="checkbox-group" onClick={() => {
+                      setType(option.label)
+                      handleCheckboxChange(`option${index}`)
+                      }}>
                       <div
                         className={
                           selectedCheckbox2 === `option${index}`
@@ -283,7 +289,10 @@ export const Raiting = () => {
               {step === 3 && (
                 <fieldset>
                   {checkboxOptionsStep3.map((option, index) => (
-                    <div key={index} className="checkbox-group">
+                    <div key={index} className="checkbox-group" onClick={() => {
+                      setType(option.label)
+                      handleCheckboxChange(`option${index}`)
+                      }}>
                       <div
                         className={
                           selectedCheckbox3 === `option${index}`

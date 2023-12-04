@@ -628,3 +628,10 @@ img {
     max-width: 550px;
   }
 }
+
+@media  (min-width: 1024px) and (max-width:1275px){
+  .ourAdvantages-list-item{
+    width: 100%;
+    max-width: 100%;
+  }
+}
