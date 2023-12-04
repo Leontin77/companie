@@ -1,0 +1,36 @@
+.politics {
+  height: max-content;
+  position: relative;
+  background-color: #f0f0f1;
+  &_cont {
+    padding: 72px;
+    &-header {
+      font-family: Verdana;
+      font-size: 40px;
+      font-weight: 700;
+      text-align: left;
+      margin-bottom: 32px;
+    }
+    &-text {
+      font-family: Verdana;
+      font-size: 20px;
+      font-weight: 400;
+      text-align: left;
+      ul {
+        padding-left: 25px;
+        li {
+          list-style: disc;
+          margin: 10px;
+        }
+      }
+      ol {
+        padding-left: 25px;
+
+        li {
+          list-style: decimal;
+          margin: 10px;
+        }
+      }
+    }
+  }
+}

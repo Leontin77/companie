@@ -16,7 +16,7 @@ export const BlackList = () => {
     console.log("data", data)
     return (
         <main className="black-list">
-            {/*<Header/>*/}
+            <Header/>
             <div className="black-list__picture">
                 <div className="global-container">
                     <div className="black-list__picture-info">

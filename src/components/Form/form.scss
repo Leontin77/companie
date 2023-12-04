@@ -18,5 +18,11 @@
     border-radius: 2px;
     border: 1px solid #d8d8d8;
     background: #ebebeb;
+    &-error {
+      color: red;
+      font-size: 12px;
+      text-align: left;
+      margin-top: 5px;
+    }
   }
 }

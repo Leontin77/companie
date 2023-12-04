@@ -1,5 +1,6 @@
 import { useState, useEffect } from "react";
 import "./header.scss";
+import { Link } from "react-router-dom";
 import LogoIcon from "../../images/logo.png";
 import BurgerIcon from "../../images/burger.png";
 
@@ -24,22 +25,34 @@ export const Header = () => {
           {screenWidth > 1200 ? (
             <ul className="navigation-list">
               <li className="navigation-list-item">
-                <a className="link" href="#">Главная</a>
+                <Link className="link" to="/">
+                  Главная
+                </Link>
               </li>
               <li className="navigation-list-item">
-                <a className="link" href="#">Чем занимается FRA?</a>
+                <a className="link" href="#">
+                  Чем занимается FRA?
+                </a>
               </li>
               <li className="navigation-list-item">
-                <a className="link" href="#">Калькулятор</a>
+                <Link className="link" to="/calculator">
+                  Калькулятор
+                </Link>
               </li>
               <li className="navigation-list-item">
-                <a className="link" href="#">Черный список</a>
+                <Link className="link" to="/blacklist">
+                  Черный список
+                </Link>
               </li>
               <li className="navigation-list-item">
-                <a className="link" href="#">Отзывы</a>
+                <Link className="link" to="/review">
+                Отзывы
+                </Link>
               </li>
               <li className="navigation-list-item">
-                <a className="link" href="#">Контакты</a>
+              <Link className="link" to="/contact">
+                Контакты
+                </Link>
               </li>
             </ul>
           ) : (

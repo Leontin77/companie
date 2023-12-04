@@ -1,4 +1,4 @@
-$primary-color: #4a90e2; // Example primary color
+$primary-color: #003C71; // Example primary color
 $background-color: #fff;
 $shadow-color: rgba(0, 0, 0, 0.1);
 $border-color: #e5adc9;
@@ -57,6 +57,13 @@ $track-fill-color: #ccc;
       font-size: 20px;
       font-weight: 400;
       color: #424242;
+      &.green {
+        border-left: 4px solid #00bfb3;
+      }
+
+      &.blue {
+        border-left: 4px solid#003c71;
+      }
       @media screen and (max-width: 1024px) {
         font-size: 16px;
         padding: 8px;

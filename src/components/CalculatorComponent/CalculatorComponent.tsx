@@ -89,7 +89,7 @@ const CalculatorComponent: React.FC = () => {
           />
         </div>
         <div className="input-group">
-          <label htmlFor="amount-lost">
+          <label htmlFor="amount-lost" className="green">
           <span className="green">2</span>
             Укажите сумму потерянных средств, $
           </label>
@@ -115,7 +115,7 @@ const CalculatorComponent: React.FC = () => {
           {/* <div className="range-value">${calculatorState.amountLost}</div> */}
         </div>
         <div className="input-group">
-          <label htmlFor="days-since-transfer">
+          <label htmlFor="days-since-transfer" className="blue">
             <span className="blue">3</span>
             Сколько прошло времени после перевода вами денег, дней
           </label>

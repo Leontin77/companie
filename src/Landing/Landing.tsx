@@ -1,5 +1,5 @@
 import "./Landing.scss";
-import { useState } from "react";
+import { useEffect, useState } from "react";
 import { Header } from "components/Header/header";
 import { MainButton } from "components/MainButton/mainButton";
 import { FAQ } from "components/FAQ/faq";
@@ -27,15 +27,24 @@ import companyIcon11 from "../images/company11.png";
 import companyIcon12 from "../images/company12.png";
 import companyIcon13 from "../images/company13.png";
 
-
-
-
-import heroBG from '../images/heroBG.png';
+import heroBG from "../images/heroBG.png";
+import { useLocation } from "react-router-dom";
 
 export interface ILandingProps {}
 
 export const Landing = () => {
   // const [openFAQ,  setOpenFAQ] = useState(false);
+
+  const location = useLocation();
+
+  useEffect(() => {
+    if (location.hash) {
+      const element = document.getElementById(location.hash.substring(1));
+      if (element) {
+        element.scrollIntoView({ behavior: "smooth" });
+      }
+    }
+  }, [location]);
 
   return (
     <main className="wrapper">
@@ -166,7 +175,7 @@ export const Landing = () => {
           </div>
         </div>
       </section>
-      <section className="chooseType">
+      <section className="chooseType" id="quiz">
         <div className="container">
           <div className="chooseType-content">
             <div className="chooseType-header">
@@ -391,6 +400,7 @@ export const Landing = () => {
         </div>
       </section> */}
       <FAQ/>
+      <span id="faq"></span>
     </main>
   );
 };
