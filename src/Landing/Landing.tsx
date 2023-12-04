@@ -60,7 +60,7 @@ export const Landing = () => {
   }, [location]);
 
   return (
-    <main className="wrapper">
+    <main>
       {/* <Header /> */}
       <section className="hero">
         {/* <img className="heroBG" src={heroBG} alt="" /> */}

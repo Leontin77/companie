@@ -36,6 +36,7 @@ export default function App() {
       <Router>
         <ScrollToTop/>
         <Header />
+        <div className="wrapper">
         <Routes>
           <Route path="/contact" element={<Contact />} />
           <Route path="/calculator" element={<CalculatorPage />} />
@@ -45,6 +46,7 @@ export default function App() {
           <Route path="/thankyou" element={<ThankYou />} />
           <Route path="/" element={<Landing />} />
         </Routes>
+        </div>
       </Router>
     </>
   );
