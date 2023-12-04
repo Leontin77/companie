@@ -10,6 +10,7 @@ import { Review } from "./Review/Review";
 import { Politics } from "Politics/Politics";
 import {ThankYou} from "ThankYou/ThankYou";
 import ScrollToTop from "ScrollToTop";
+import { Header } from "components/Header/header";
 
 export default function App() {
 
@@ -24,15 +25,17 @@ export default function App() {
             usersCity: data.city,
             usersCountry: data.country_name,
             phoneCode: data.country_calling_code,
-            countryCode: data.country_code
+            countryCode: data.country_code,
           })
         );
       });
   }, []);
 
   return (
-    <Router>
-      <ScrollToTop/>
+    <>
+      <Router>
+        <ScrollToTop/>
+        <Header />
         <Routes>
           <Route path="/contact" element={<Contact />} />
           <Route path="/calculator" element={<CalculatorPage />} />
@@ -42,6 +45,7 @@ export default function App() {
           <Route path="/thankyou" element={<ThankYou />} />
           <Route path="/" element={<Landing />} />
         </Routes>
-    </Router>
+      </Router>
+    </>
   );
 }

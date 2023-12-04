@@ -9,7 +9,7 @@ export interface ILandingProps {
 export const ThankYou = () => {
         return (
         <main className="thank-you">
-            <Header/>
+            {/* <Header/> */}
             <div className="thank-you__picture">
                 <div className="global-container">
                     <div className="thank-you__picture-info">
