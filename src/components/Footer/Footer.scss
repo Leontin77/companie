@@ -34,6 +34,7 @@
       cursor: pointer;
     }
     .footer__item {
+      display: block;
       color: #BDBDBD;
       font-size: 16px;
       font-weight: 400;
@@ -64,7 +65,7 @@
   }
 }
 
-@media (max-width: 390px) {
+@media (max-width: 450px) {
   .footer {
     &__content-row {
       display: flex;
