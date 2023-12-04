@@ -26,6 +26,9 @@ import companyIcon10 from "../images/company10.png";
 import companyIcon11 from "../images/company11.png";
 import companyIcon12 from "../images/company12.png";
 import companyIcon13 from "../images/company13.png";
+import { LeaveRequest } from "components/LeaveRequest/LeaveRequest";
+import { Footer } from "components/Footer/Footer";
+import { Raiting } from "components/Rating/rating";
 
 import heroBG from "../images/heroBG.png";
 import { useLocation } from "react-router-dom";
@@ -50,7 +53,7 @@ export const Landing = () => {
     <main className="wrapper">
       <Header />
       <section className="hero">
-        <img className="heroBG" src={heroBG} alt="" />
+        {/* <img className="heroBG" src={heroBG} alt="" /> */}
         <div className="container">
           <div className="hero-content">
             <div className="hero-content__description">
@@ -175,7 +178,7 @@ export const Landing = () => {
           </div>
         </div>
       </section>
-      <section className="chooseType" id="quiz">
+      {/* <section className="chooseType"> id="quiz"
         <div className="container">
           <div className="chooseType-content">
             <div className="chooseType-header">
@@ -256,7 +259,8 @@ export const Landing = () => {
             </div>
           </div>
         </div>
-      </section>
+      </section> */}
+      <Raiting/>
       <section className="ourAdvantages">
         <div className="container">
           <div className="ourAdvantages-content">
@@ -401,6 +405,8 @@ export const Landing = () => {
       </section> */}
       <FAQ/>
       <span id="faq"></span>
+      <LeaveRequest/>
+            <Footer/>
     </main>
   );
 };
