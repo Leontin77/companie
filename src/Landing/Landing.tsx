@@ -129,7 +129,7 @@ export const Landing = () => {
                 </div>
               </li>
               <li className="aboutUs-list-item">
-                <h4>Как скоро мне вернутденьги?</h4>
+                <h4>Как скоро мне вернут деньги?</h4>
                 <div className="shortBorder"></div>
                 <div className="item-descr">
                   Как только офферта будет подписана, мы начинаем процедуру
