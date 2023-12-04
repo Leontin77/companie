@@ -31,6 +31,11 @@ export const Header = () => {
   const burgerClick = () => {
     setIsOpen(prev => !prev)
   };
+  const close = () => {
+    if (screenWidth < 1024) {
+      setIsOpen(false);
+    }
+  };
 
   return (
     <header className="header">
@@ -39,32 +44,32 @@ export const Header = () => {
         <nav className="navigation">
           {isOpen &&
             <ul className="navigation-list">
-              <li className="navigation-list-item">
+              <li onClick={close} className="navigation-list-item">
                 <Link className="link" to="/">
                   Главная
                 </Link>
               </li>
-              <li className="navigation-list-item">
+              <li onClick={close}  className="navigation-list-item">
                 <a className="link" href="#">
                   Чем занимается FRA?
                 </a>
               </li>
-              <li className="navigation-list-item">
+              <li onClick={close}  className="navigation-list-item">
                 <Link className="link" to="/calculator">
                   Калькулятор
                 </Link>
               </li>
-              <li className="navigation-list-item">
+              <li onClick={close}  className="navigation-list-item">
                 <Link className="link" to="/blacklist">
                   Черный список
                 </Link>
               </li>
-              <li className="navigation-list-item">
+              <li onClick={close}  className="navigation-list-item">
                 <Link className="link" to="/review">
                 Отзывы
                 </Link>
               </li>
-              <li className="navigation-list-item">
+              <li onClick={close}  className="navigation-list-item">
               <Link className="link" to="/contact">
                 Контакты
                 </Link>
