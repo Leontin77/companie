@@ -8,6 +8,7 @@ import { Contact } from "./Contact/Contact";
 import { CalculatorPage } from "./CalculatorPage/CalculatorPage";
 import { Review } from "./Review/Review";
 import { Politics } from "Politics/Politics";
+import {ThankYou} from "ThankYou/ThankYou";
 
 export default function App() {
   useEffect(() => {
@@ -38,6 +39,7 @@ export default function App() {
           <Route path="/blacklist" element={<BlackList />} />
           <Route path="/review" element={<Review />} />
           <Route path="/politics" element={<Politics />} />
+          <Route path="/thankyou" element={<ThankYou />} />
           <Route path="/" element={<Landing />} />
         </Routes>
     </Router>

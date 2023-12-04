@@ -1,0 +1,121 @@
+.thank-you {
+  display: flex;
+  flex-wrap: wrap;
+  width: 100%;
+  background-color: #F0F0F1;
+  .header {
+    width: 100%;
+  }
+  .thank-you__picture {
+    width: 100%;
+    height: 827px;
+    position: relative;
+    background-image: url("../images/contacts/back.png");
+    background-repeat: no-repeat;
+    background-size: cover;
+    display: flex;
+    align-items: center;
+    .global-container {
+      display: flex;
+      justify-content: right;
+    }
+    .title {
+      font-size: 54px;
+      font-weight: 700;
+    }
+    .thank-you-item {
+      font-size: 20px;
+      font-weight: 400;
+      gap: 8px;
+      display: flex;
+    }
+    .divider {
+      width: 112px;
+      height: 8px;
+      background: #6C1D45;
+    }
+    .thank-you__picture-info {
+      text-align: left;
+      background-color: white;
+      color: #424242;
+      padding: 25px 50px;
+      gap: 24px;
+      width: 745px;
+      display: flex;
+      flex-direction: column;
+    }
+    .global-container {
+      width: 100%;
+    }
+  }
+}
+
+@media (max-width: 1440px) {
+  .thank-you {
+    .thank-you__picture {
+      background-image: url("../images/contacts/backLarge.png");
+      .thank-you__picture-info {
+        width: 640px;
+      }
+    }
+  }
+}
+
+@media (max-width: 834px) {
+  .thank-you {
+    .thank-you__picture {
+      background-image: url("../images/contacts/backMedium.png");
+      height: 968px;
+      align-items: end;
+      padding: 0 0 48px 0;
+      .global-container {
+        display: flex;
+        justify-content: center;
+      }
+      .thank-you__picture-info {
+        width: auto;
+        .thank-you-item {
+          div {
+            display: flex;
+            flex-wrap: wrap;
+            gap: 5px;
+          }
+        }
+      }
+    }
+  }
+}
+
+@media (max-width: 650px) {
+  .thank-you {
+    .thank-you__picture {
+      .title {
+        font-size: 36px;
+      }
+      .thank-you__picture-info {
+        padding: 25px 15px;
+        .thank-you-item {
+          div {
+            display: flex;
+            flex-wrap: wrap;
+            gap: 5px;
+          }
+        }
+      }
+    }
+  }
+}
+
+@media (max-width: 450px) {
+  .thank-you {
+    .thank-you__picture {
+      background-image: url("../images/contacts/backPhone.png");
+      height: 968px;
+      align-items: end;
+      padding: 0 0 48px 0;
+      .title {
+        font-size: 30px;
+      }
+    }
+  }
+}
