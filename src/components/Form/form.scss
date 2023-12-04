@@ -9,10 +9,15 @@
   background: #f1f2f2;
   border: 1px solid #701b45;
   height: fit-content;
+
+  .input-wrapper {
+    width: 100%;
+  }
+
   &-input {
     display: flex;
-    width: 372px;
     height: 48px;
+    width: 100%;
     padding: 0px 16px;
     align-items: center;
     border-radius: 2px;
