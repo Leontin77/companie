@@ -230,12 +230,43 @@ export const About = () => {
               Что нужно для запуска процесса?{" "}
             </div>
             <div className="returnTerms-box">
-                {youNeed.map(item => (
-                    <div className="returnTerms-container">
-                        <div className="returnTerms-container__number">{item.number}</div>
-                        <div className="returnTerms-container__descr">{item.label}</div>
-                    </div>
-                ))}
+              {youNeed.map((item) => (
+                <div className="returnTerms-container">
+                  <div className="returnTerms-container__number">
+                    {item.number}
+                  </div>
+                  <div className="returnTerms-container__descr">
+                    {item.label}
+                  </div>
+                </div>
+              ))}
+            </div>
+          </div>
+        </div>
+      </section>
+      <section className="howToHelp">
+        <div className="global-container">
+          <div className="howToHelp-content">
+            <h3 className="ourMission-title maxWidth">
+              Как может защищаться брокер мошенник{" "}
+            </h3>
+            <div className="howToHelp-subtitle">
+              Изучая каждое дело наши специалисты в первую очередь изучают
+              договор оферты, который клиент подписал с правонарушителем.
+            </div>
+            <br/>
+            <div className="howToHelp-subtitle">
+              Если вы оплачивали услуги с ваших карт и эти условия были
+              прописаны в договоре, то прямых признаков мошенничества нет.
+              Потому как вы собственноручно сделали перевод, будучи инвестором. 
+            </div>
+            <br/>
+            <div className="howToHelp-subtitle">
+              Но если вы не можете вывести ваши средства, или ваш аккаунт
+              заблокирован, с него пропали все деньги и вам не отвечают или
+              постоянно что-то обещают но результата нет, то причин вернуть вам
+              деньги очень много и главное, реально сделать это легально,
+              юридическим путем.
             </div>
           </div>
         </div>
