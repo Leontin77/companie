@@ -1,0 +1,214 @@
+.about {
+  display: flex;
+  flex-wrap: wrap;
+  width: 100%;
+  background-color: #f0f0f1;
+  padding-top: 60px;
+  .header {
+    width: 100%;
+  }
+  .about__picture {
+    width: 100%;
+    height: 485px;
+    position: relative;
+    background-image: url("../images/about/header.png");
+    background-repeat: no-repeat;
+    background-size: cover;
+    display: flex;
+    align-items: center;
+    .global-container {
+      display: flex;
+      justify-content: left;
+      width: 100%;
+    }
+    .title {
+      font-size: 54px;
+      font-weight: 700;
+    }
+    .about__picture-info {
+      text-align: left;
+      color: #424242;
+      gap: 24px;
+      display: flex;
+      flex-direction: column;
+    }
+
+  }
+  .about__fca {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 20px;
+    width: 100%;
+    text-align: left;
+    margin: 72px 0;
+    align-items: center;
+    &-info {
+      display: flex;
+      flex-direction: column;
+      gap: 20px;
+      border-left: 8px solid #701B45;
+      padding-left: 32px;
+      justify-content: center;
+      min-height: 410px;
+    }
+    &-image {
+      width: 100%;
+      height: 410px;
+      position: relative;
+      background-image: url("../images/about/fca.png");
+      background-repeat: no-repeat;
+      background-size: cover;
+    }
+  }
+  .about__charge {
+    width: 100%;
+    position: relative;
+    background-image: url("../images/about/hand.png");
+    background-repeat: no-repeat;
+    background-size: cover;
+    text-align: left;
+    margin-bottom: 72px;
+    height: 250px;
+    display: flex;
+    align-items: center;
+    &-info {
+      display: flex;
+      flex-direction: column;
+      gap: 10px;
+      padding: 48px;
+      &-title {
+        color: #701B45;
+        font-size: 40px;
+        font-weight: 700;
+        text-transform: uppercase;
+      }
+    }
+  }
+  .aboutUs {
+    width: 100%;
+    padding: 0 0 72px 0;
+    .aboutUs-subtitle {
+      max-width: unset;
+    }
+    .aboutUs-list-item {
+      width: calc((100% - 70px) / 3);
+    }
+  }
+}
+
+@media (max-width: 1440px) {
+  .about {
+    .about__picture {
+      background-image: url("../images/about/headerLarge.png");
+    }
+    .about__fca {
+      &-info {
+        font-size: 18px;
+      }
+      &-image {
+        background-image: url("../images/about/fcaLarge.png");
+      }
+    }
+    .about__charge {
+      background-image: url("../images/about/handMedium.png");
+    }
+  }
+}
+
+@media (max-width: 834px) {
+  .about {
+    .about__picture {
+      background-image: url("../images/about/headerMedium.png");
+      height: 485px;
+
+      padding: 0 0 48px 0;
+    }
+    .about__fca {
+      grid-template-columns: unset;
+      grid-template-rows: 1fr 1fr;
+      gap: 20px;
+      &-info {
+        font-size: 18px;
+        padding-left: 20px;
+      }
+      &-image {
+        background-image: url("../images/about/fcaMedium.png");
+      }
+    }
+   .about__charge {
+    background-image: url("../images/about/handMedium.png");
+    &-info {
+      padding: 24px;
+      &-title {
+        font-size: 34px;
+      }
+      &-text {
+        font-size: 18px;
+      }
+    }
+  }
+    .aboutUs {
+      width: 100%;
+      padding: 0 0 72px 0;
+      .aboutUs-subtitle {
+        max-width: unset;
+      }
+      .aboutUs-list-item {
+        width: 100%;
+        max-width: unset;
+      }
+    }
+  }
+}
+
+@media (max-width: 650px) {
+  .about {
+    .about__picture {
+      .title {
+        font-size: 36px;
+      }
+    }
+    .about__fca {
+      &-info {
+        font-size: 18px;
+      }
+      &-image {
+        background-image: url("../images/about/fcaPhone.png");
+      }
+    }
+    .about__charge {
+      background-image: url("../images/about/handPhone.png");
+      min-height: 592px;
+      align-items: flex-start;
+      &-info {
+        &-title {
+          font-size: 28px;
+        }
+        &-text {
+          font-size: 18px;
+        }
+      }
+    }
+  }
+}
+
+@media (max-width: 450px) {
+  .about {
+    .about__picture {
+      background-image: url("../images/about/headerPhone.png");
+       height: 645px;
+    }
+    .about__charge {
+      background-image: url("../images/about/handPhone.png");
+      min-height: 592px;
+      &-info {
+        &-title {
+          font-size: 28px;
+        }
+        &-text {
+          font-size: 18px;
+        }
+      }
+    }
+  }
+}
