@@ -3,10 +3,13 @@ import "./header.scss";
 import { Link } from "react-router-dom";
 import LogoIcon from "../../images/logo.png";
 import BurgerIcon from "../../images/burger.png";
+import { useNavigate } from 'react-router-dom';
 
 export const Header = () => {
   const [screenWidth, setScreenWidth] = useState(window.innerWidth);
   const [isOpen, setIsOpen] = useState(false);
+  const navigate = useNavigate();
+
 
   useEffect(() => {
     const handleResize = () => {
@@ -40,7 +43,7 @@ export const Header = () => {
   return (
     <header className="header">
       <div className="container">
-        <img className="header-logo" src={LogoIcon} alt="logo" />
+        <img className="header-logo" src={LogoIcon} alt="logo" onClick={() => navigate('/')} />
         <nav className="navigation">
           {isOpen &&
             <ul className="navigation-list">

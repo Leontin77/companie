@@ -1,6 +1,6 @@
 import React, { useEffect } from "react";
 import "./styles.scss";
-import { BrowserRouter as Router, Route, Routes, Link } from "react-router-dom";
+import { BrowserRouter as Router, Route, Routes } from "react-router-dom";
 
 import { Landing } from "./Landing/Landing";
 import { BlackList } from "./BlackList/BlackList";
@@ -8,17 +8,17 @@ import { Contact } from "./Contact/Contact";
 import { CalculatorPage } from "./CalculatorPage/CalculatorPage";
 import { Review } from "./Review/Review";
 import { Politics } from "Politics/Politics";
-import { ThankYou } from "ThankYou/ThankYou";
+import {ThankYou} from "ThankYou/ThankYou";
+import ScrollToTop from "ScrollToTop";
 import { Header } from "components/Header/header";
 import {About} from "About/About";
 
 export default function App() {
+
   useEffect(() => {
-    // Fetch the IP data and update the context
     fetch("https://ipapi.co/json")
       .then((res) => res.json())
       .then((data) => {
-        // Update the state variables with the fetched data
         localStorage.setItem(
           "IPData",
           JSON.stringify({
@@ -35,8 +35,9 @@ export default function App() {
   return (
     <>
       <Router>
-        {/* Routes define the mapping of path to component */}
+        <ScrollToTop/>
         <Header />
+        <div className="wrapper">
         <Routes>
           <Route path="/contact" element={<Contact />} />
           <Route path="/calculator" element={<CalculatorPage />} />
@@ -47,6 +48,7 @@ export default function App() {
           <Route path="/about" element={<About />} />
           <Route path="/" element={<Landing />} />
         </Routes>
+        </div>
       </Router>
     </>
   );
