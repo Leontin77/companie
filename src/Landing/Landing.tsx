@@ -106,7 +106,7 @@ export const Landing = () => {
         <div className="container">
           <div className="aboutUs-content">
             <h2 className="aboutUs-title">
-              КАК FRA ПОМОЖЕТВЕРНУТЬ ВАМ ДЕНЬГИ?
+              КАК FRA ПОМОЖЕТ ВЕРНУТЬ ВАМ ДЕНЬГИ?
             </h2>
             <div className="aboutUs-subtitle">
               Наш отдел специализируется на работе с брокерами-мошенниками,
@@ -194,8 +194,8 @@ export const Landing = () => {
           <div className="ourAdvantages-content">
             <h2 className="aboutUs-title">НАШИ ПРЕИМУЩЕСТВА</h2>
             <div className="aboutUs-subtitle">
-              Поможем вернуть деньги, украденные у тебяброкером-мошенником!
-              Беремся за дело при потерях от 1000$.Вероятность возврата - в
+              Поможем вернуть деньги, украденные у тебя брокером-мошенником!
+              Беремся за дело при потерях от 1000$. Вероятность возврата - в
               свыше  96% случаях.
             </div>
 

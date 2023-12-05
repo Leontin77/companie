@@ -1,4 +1,4 @@
-$primary-color: #003C71; // Example primary color
+$primary-color: #003c71; // Example primary color
 $background-color: #fff;
 $shadow-color: rgba(0, 0, 0, 0.1);
 $border-color: #e5adc9;
@@ -42,6 +42,33 @@ $track-fill-color: #ccc;
     display: flex;
     flex-direction: column;
     margin-bottom: 20px;
+    position: relative;
+    .fakeInput {
+      width: 100%;
+      height: 7px;
+      background: linear-gradient(var(--thumb-color), var(--thumb-color)) 0 /
+        var(--fill-percentage) 100% no-repeat $track-fill-color;
+      border-radius: 10px;
+      left: 0;
+      top: 29px;
+    }
+
+    .range-tooltip {
+      position: absolute;
+      top: -25px;
+      transform: translateX(-50%);
+      background-color: #003c71;
+      color: white;
+      padding: 4px 8px;
+      width: 82px;
+      height: 27px;
+      font-size: 12px;
+      pointer-events: none;
+      white-space: nowrap;
+      &.green {
+        background-color: #00bfb3;
+      }
+    }
 
     label {
       height: auto;
@@ -111,18 +138,21 @@ $track-fill-color: #ccc;
 
     input[type="range"] {
       -webkit-appearance: none;
-      width: 100%;
+      width: 90%;
+      @media screen and (max-width: 1024px) {
+        width: 90%;
+      }
       margin: 30px 0 10px;
       background: $track-fill-color;
+   
 
       &:focus {
         outline: none;
       }
-
       // Style for Chrome, Safari, and Opera
       &::-webkit-slider-runnable-track {
         height: 4px;
-        background: linear-gradient($primary-color, $primary-color) 0 /
+        background: linear-gradient(var(--thumb-color), var(--thumb-color)) 0 /
           var(--fill-percentage) 100% no-repeat $track-fill-color;
         border-radius: 10px;
       }
@@ -130,12 +160,19 @@ $track-fill-color: #ccc;
       &::-webkit-slider-thumb {
         -webkit-appearance: none;
         appearance: none;
-        width: 25px;
-        height: 25px;
-        border-radius: 50%;
-        background: $primary-color;
+        width: 80px;
+        height: 30px;
+        box-shadow: none !important;
+        border: none !important;
+        color: unset !important;
+        outline: none !important;
+        background: transparent;
+        font-size: 16px;
+        content-visibility: visible;
+        position: relative;
         cursor: pointer;
-        margin-top: -9px; /* Adjust thumb position to be centered */
+        z-index: 5;
+        margin-top: -13px; 
       }
 
       // Style for Firefox
@@ -147,11 +184,21 @@ $track-fill-color: #ccc;
       }
 
       &::-moz-range-thumb {
-        width: 25px;
-        height: 25px;
-        border-radius: 50%;
-        background: $primary-color;
+        -webkit-appearance: none;
+        appearance: none;
+        width: 80px;
+        height: 30px;
+        box-shadow: none !important;
+        border: none !important;
+        color: unset !important;
+        outline: none !important;
+        background: transparent;
+        font-size: 16px;
+        content-visibility: visible;
+        position: relative;
         cursor: pointer;
+        z-index: 5;
+        margin-top: -13px; 
       }
 
       // Style for IE
@@ -173,11 +220,21 @@ $track-fill-color: #ccc;
       }
 
       &::-ms-thumb {
-        width: 25px;
-        height: 25px;
-        background: $primary-color;
+        -webkit-appearance: none;
+        appearance: none;
+        width: 80px;
+        height: 30px;
+        box-shadow: none !important;
+        border: none !important;
+        color: unset !important;
+        outline: none !important;
+        background: transparent;
+        font-size: 16px;
+        content-visibility: visible;
+        position: relative;
         cursor: pointer;
-        margin-top: 0;
+        z-index: 5;
+        margin-top: -13px; 
       }
 
       &:focus::-ms-fill-lower {
@@ -283,4 +340,9 @@ $track-fill-color: #ccc;
       background-color: darken($primary-color, 10%);
     }
   }
+}
+input[type="range"]::-webkit-slider-thumb::after {
+  /* Style your thumb */
+  /* Add a pseudo-element for displaying the value */
+  content: var(--thumb-value);
 }
