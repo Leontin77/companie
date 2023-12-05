@@ -40,7 +40,9 @@ export const Footer = () => {
           <div className="footer__content-colymn">
             <div className="footer__content-colymn-header">Помощь</div>
             <div>
-              <div className="footer__item">Что такое FRA?</div>
+              <Link className="footer__item" to="/about">
+                Что такое FRA?
+              </Link>
               <div className="footer__item">Как работает FRA</div>
               <Link className="footer__item" to="/#faq">
                 Частые вопросы

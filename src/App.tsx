@@ -11,6 +11,7 @@ import { Politics } from "Politics/Politics";
 import {ThankYou} from "ThankYou/ThankYou";
 import ScrollToTop from "ScrollToTop";
 import { Header } from "components/Header/header";
+import {About} from "About/About";
 
 export default function App() {
 
@@ -44,6 +45,7 @@ export default function App() {
           <Route path="/review" element={<Review />} />
           <Route path="/politics" element={<Politics />} />
           <Route path="/thankyou" element={<ThankYou />} />
+          <Route path="/about" element={<About />} />
           <Route path="/" element={<Landing />} />
         </Routes>
         </div>
