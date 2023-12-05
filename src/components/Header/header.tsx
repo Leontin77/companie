@@ -3,13 +3,12 @@ import "./header.scss";
 import { Link } from "react-router-dom";
 import LogoIcon from "../../images/logo.png";
 import BurgerIcon from "../../images/burger.png";
-import { useNavigate } from 'react-router-dom';
+import { useNavigate } from "react-router-dom";
 
 export const Header = () => {
   const [screenWidth, setScreenWidth] = useState(window.innerWidth);
   const [isOpen, setIsOpen] = useState(false);
   const navigate = useNavigate();
-
 
   useEffect(() => {
     const handleResize = () => {
@@ -21,18 +20,16 @@ export const Header = () => {
     };
   }, []);
 
-
   useEffect(() => {
     if (screenWidth < 1024) {
       setIsOpen(false);
     } else {
       setIsOpen(true);
     }
-
   }, [screenWidth]);
 
   const burgerClick = () => {
-    setIsOpen(prev => !prev)
+    setIsOpen((prev) => !prev);
   };
   const close = () => {
     if (screenWidth < 1024) {
@@ -43,43 +40,53 @@ export const Header = () => {
   return (
     <header className="header">
       <div className="container">
-        <img className="header-logo" src={LogoIcon} alt="logo" onClick={() => navigate('/')} />
+        <img
+          className="header-logo"
+          src={LogoIcon}
+          alt="logo"
+          onClick={() => navigate("/")}
+        />
         <nav className="navigation">
-          {isOpen &&
+          {isOpen && (
             <ul className="navigation-list">
               <li onClick={close} className="navigation-list-item">
                 <Link className="link" to="/">
                   Главная
                 </Link>
               </li>
-              <li onClick={close}  className="navigation-list-item">
-                <a className="link" href="#">
+              <li onClick={close} className="navigation-list-item">
+                <Link className="link" to="/about">
                   Чем занимается FRA?
-                </a>
+                </Link>
               </li>
-              <li onClick={close}  className="navigation-list-item">
+              <li onClick={close} className="navigation-list-item">
                 <Link className="link" to="/calculator">
                   Калькулятор
                 </Link>
               </li>
-              <li onClick={close}  className="navigation-list-item">
+              <li onClick={close} className="navigation-list-item">
                 <Link className="link" to="/blacklist">
                   Черный список
                 </Link>
               </li>
-              <li onClick={close}  className="navigation-list-item">
+              <li onClick={close} className="navigation-list-item">
                 <Link className="link" to="/review">
-                Отзывы
+                  Отзывы
                 </Link>
               </li>
-              <li onClick={close}  className="navigation-list-item">
-              <Link className="link" to="/contact">
-                Контакты
+              <li onClick={close} className="navigation-list-item">
+                <Link className="link" to="/contact">
+                  Контакты
                 </Link>
               </li>
             </ul>
-          }
-            <img className="burger-icon" onClick={burgerClick} src={BurgerIcon} alt="menu" />
+          )}
+          <img
+            className="burger-icon"
+            onClick={burgerClick}
+            src={BurgerIcon}
+            alt="menu"
+          />
         </nav>
       </div>
     </header>
