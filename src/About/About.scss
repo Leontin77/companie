@@ -3,7 +3,6 @@
   flex-wrap: wrap;
   width: 100%;
   background-color: #f0f0f1;
-  padding-top: 60px;
   .header {
     width: 100%;
   }
@@ -32,7 +31,6 @@
       display: flex;
       flex-direction: column;
     }
-
   }
   .about__fca {
     display: grid;
@@ -46,7 +44,7 @@
       display: flex;
       flex-direction: column;
       gap: 20px;
-      border-left: 8px solid #701B45;
+      border-left: 8px solid #701b45;
       padding-left: 32px;
       justify-content: center;
       min-height: 410px;
@@ -77,7 +75,7 @@
       gap: 10px;
       padding: 48px;
       &-title {
-        color: #701B45;
+        color: #701b45;
         font-size: 40px;
         font-weight: 700;
         text-transform: uppercase;
@@ -93,6 +91,151 @@
     .aboutUs-list-item {
       width: calc((100% - 70px) / 3);
     }
+  }
+}
+
+.ourMission {
+  padding: 72px 0;
+  width: 100%;
+  background: #fff;
+  &-title {
+    color: #424242;
+    text-align: center;
+    font-family: Verdana;
+    font-size: 40px;
+    font-style: normal;
+    font-weight: 700;
+    line-height: 133.687%;
+    text-transform: uppercase;
+    margin-bottom: 72px;
+  }
+  &-box {
+    height: 100%;
+    display: flex;
+    flex-direction: column;
+    flex-wrap: wrap;
+    max-height: 450px;
+  }
+  &-container {
+    display: flex;
+    height: 116px;
+    padding: 4px 32px;
+    align-items: center;
+    gap: 24px;
+    align-self: stretch;
+    border: 1px solid #701b45;
+    width: 48%;
+    margin-bottom: 32px;
+    &__number {
+      color: #701b45;
+      font-family: Verdana;
+      font-size: 54px;
+      font-style: normal;
+      font-weight: 700;
+      line-height: 133.687%; /* 72.191px */
+      text-transform: uppercase;
+    }
+    &__descr {
+      color: #6a6a6a;
+      font-family: Verdana;
+      font-size: 20px;
+      font-style: normal;
+      font-weight: 400;
+      line-height: 133.687%; /* 26.737px */
+      text-align: left;
+    }
+  }
+}
+
+.return {
+  padding: 72px 0;
+  width: 100%;
+  &-content {
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+  }
+  &-list {
+    text-align: left;
+    margin-bottom: 72px;
+    &__item {
+      list-style: disc;
+      color: #6a6a6a;
+      font-family: "Verdana";
+      font-size: 20px;
+      font-style: normal;
+      font-weight: 400;
+      line-height: 133.687%; /* 26.737px */
+    }
+  }
+  .maxWidth {
+    max-width: 790px;
+  }
+  &-image {
+    &__img {
+      width: 100%;
+    }
+  }
+}
+
+.returnTerms {
+  padding: 72px 0;
+  width: 100%;
+  &-subtitle {
+    text-align: left;
+  }
+  &-question {
+    margin-top: 48px;
+    text-align: left;
+    color: var(--Grey-text, #6a6a6a);
+    font-family: Verdana;
+    font-size: 32px;
+    font-style: normal;
+    font-weight: 700;
+    line-height: 133.687%; /* 42.78px */
+    text-transform: uppercase;
+    margin-bottom: 48px;
+  }
+  &-container {
+    display: flex;
+    align-items: center;
+    width: 100%;
+    padding: 16px 32px;
+    align-items: center;
+    gap: 32px;
+    align-self: stretch;
+    border-bottom: 4px solid #ececed;
+    background: #f9f9f9;
+    margin-bottom: 16px;
+    &__number {
+      color: #701b45;
+      font-family: Verdana;
+      font-size: 54px;
+      font-style: normal;
+      font-weight: 700;
+      line-height: 133.687%; /* 72.191px */
+      text-transform: uppercase;
+    }
+    &__descr {
+      color: #6a6a6a;
+      font-family: Verdana;
+      font-size: 20px;
+      font-style: normal;
+      font-weight: 400;
+      line-height: 133.687%;
+      text-align: left;
+    }
+  }
+}
+
+@media screen and (max-width: 1250px) {
+  .ourMission-box {
+    max-height: 100%;
+  }
+  .ourMission-container {
+    width: 100%;
+    height: auto;
   }
 }
 
@@ -135,18 +278,18 @@
         background-image: url("../images/about/fcaMedium.png");
       }
     }
-   .about__charge {
-    background-image: url("../images/about/handMedium.png");
-    &-info {
-      padding: 24px;
-      &-title {
-        font-size: 34px;
-      }
-      &-text {
-        font-size: 18px;
+    .about__charge {
+      background-image: url("../images/about/handMedium.png");
+      &-info {
+        padding: 24px;
+        &-title {
+          font-size: 34px;
+        }
+        &-text {
+          font-size: 18px;
+        }
       }
     }
-  }
     .aboutUs {
       width: 100%;
       padding: 0 0 72px 0;
@@ -190,13 +333,20 @@
       }
     }
   }
+  .returnTerms-container {
+    flex-direction: column;
+    align-items: start;
+  }
+  .return-content {
+    margin-left: 24px;
+  }
 }
 
 @media (max-width: 450px) {
   .about {
     .about__picture {
       background-image: url("../images/about/headerPhone.png");
-       height: 645px;
+      height: 645px;
     }
     .about__charge {
       background-image: url("../images/about/handPhone.png");
