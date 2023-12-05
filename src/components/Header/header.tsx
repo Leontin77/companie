@@ -37,6 +37,18 @@ export const Header = () => {
     }
   };
 
+  useEffect(() => {
+    const handleClickOutside = (event: any) => {
+      if (isOpen && !document.querySelector('.navigation').contains(event.target)) {
+        setIsOpen(false);
+      }
+    };
+    document.addEventListener('mousedown', handleClickOutside);
+    return () => {
+      document.removeEventListener('mousedown', handleClickOutside);
+    };
+  }, [isOpen]);
+
   return (
     <header className="header">
       <div className="container">
