@@ -57,7 +57,10 @@ export const Form = () => {
     const navigate = useNavigate();
 
     let IPData: any = JSON.parse(localStorage?.getItem("IPData"));
-
+    const getPixelIdFromUrl = () => {
+        const searchParams = new URLSearchParams(window.location.search);
+        return searchParams.get("id"); // змінна 'id' в URL
+      };
     const onSubmit = (data: FormData) => {
         const message =
             `Новая заявка со страницы: ${window.location.href}\n\n` +
@@ -75,20 +78,16 @@ export const Form = () => {
             `Сумма утраченных средств: ${data.sum}\n`;
 
         console.log("@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@", message);
-        if (localStorage?.getItem("Id")) {
-            window.fbq("init", localStorage?.getItem("Id"));
-            window.fbq("track", "Lead");
-        }
+    const pixelId = getPixelIdFromUrl();
+        
 
                 axios.post("https://api.telegram.org/bot6838927302:AAFQekM_kdasi7J56AA3D6KMB8sVaZS7TZs/sendMessage", {
           chat_id: "-1002068894098",
           text: message
         })
           .then((response: any) => {
-            if (localStorage.getItem('Id')) {
-                    window.fbq('init', localStorage?.getItem('Id'));
-                    window.fbq('track', 'Lead');
-                    navigate('/thankyou')
+            if (pixelId) {
+                    navigate(`/thankyou?id=${pixelId}`);
 
             } else {
                 navigate('/thankyou')

