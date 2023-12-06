@@ -10,7 +10,6 @@ import axios from "axios";
 
 const validationSchema = yup.object().shape({
   name: yup.string().required("Имя и Фамилия обязательны"),
-  sum: yup.number().required("Укажите сумум утеряных средств"),
   email: yup
     .string()
     .email("Введите действительный адрес электронной почты")
@@ -54,7 +53,7 @@ export const Raiting = () => {
   const [email, setEmail] = useState("");
   const [lossAmount, setLossAmount] = useState("");
   const [probability, setProbability] = useState(94);
-  
+
   const [lossAmountError, setLossAmountError] = useState('');
 
   const [amountNumber, setAmountNumber] = useState(0);
@@ -121,9 +120,8 @@ export const Raiting = () => {
   //   setSelectedCheckbox3(null);
   // };
   let IPData: any = JSON.parse(localStorage?.getItem("IPData"));
-  console.log("🚀 ~ file: rating.tsx:124 ~ onSubmit ~ lossAmount:", lossAmount)
-  const onSubmit = () => {
-    console.log('@@@@@@', lossAmount);
+
+  const onSubmit = (data: FormData) => {
     if (!lossAmount) {
       setLossAmountError('Укажите сумму утраченных средств');
       return
@@ -133,9 +131,9 @@ export const Raiting = () => {
       fraudDuration: duration,
       fraudAmount: amount,
       brokerName: brokerName,
-      fullName: fullName,
-      contactNumber: contactNumber,
-      email: email,
+      fullName: data.name,
+      contactNumber: data.phone,
+      email: data.email,
       lossAmount: lossAmount,
     };
     const message =
@@ -157,7 +155,6 @@ export const Raiting = () => {
       `Email: ${submissionData.email}\n`;
     // `Телефон: ${data.phone}\n` +
 
-    console.log("@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@", message);
     if (localStorage?.getItem("Id")) {
       window.fbq("init", localStorage?.getItem("Id"));
       window.fbq("track", "Lead");
@@ -246,12 +243,10 @@ export const Raiting = () => {
       case 5:
         setStep(step + 1);
         break;
-      case 6: fullName && email && contactNumber ? onSubmit() : setStep(step);
-      break;
+      // case 6: fullName && email && contactNumber ? onSubmit() : setStep(step);
+      // break;
     }
   };
-  console.log("🚀 ~ file: rating.tsx:250 ~ nextStep ~ fullName && email && contactNumber:", fullName && email && contactNumber)
-  // console.log("🚀 ~ file: rating.tsx:250 ~ nextStep ~ contactNumber:", contactNumber)
 
   return (
     <section className="chooseType">
@@ -446,13 +441,14 @@ export const Raiting = () => {
                     <Controller
                       name="phone"
                       control={control}
-                      render={({ field: { value } }) => (
+                      render={({ field }) => (
                         <PhoneInput
                           defaultCountry={IPData?.countryCode || "PL"}
                           placeholder="Enter phone number"
                           value={IPData?.phoneCode}
                           onChange={(value) => setContactNumber(value)}
                           className="chooseType-box-input"
+                          {...field}
                         />
                       )}
                     />
@@ -518,7 +514,7 @@ export const Raiting = () => {
                         ))}
                       </div>
                     )}
-                    {lossAmountError && 
+                    {lossAmountError &&
                       <p className="form-input-error">{lossAmountError}</p>
                     }
                   </div>
