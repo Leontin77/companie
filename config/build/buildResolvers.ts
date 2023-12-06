@@ -3,7 +3,7 @@ import { BuildOptions } from './types/config';
 
 export function buildResolvers(options: BuildOptions): ResolveOptions {
     return {
-        extensions: ['.tsx', '.ts', '.js', '.png'],
+        extensions: ['.tsx', '.ts', '.js', '.png', 'jpg','jpeg', 'svg'],
         preferAbsolute: true,
         modules: [options.paths.src, 'node_modules'],
         mainFiles: ['index'],

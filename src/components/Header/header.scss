@@ -23,8 +23,13 @@ img {
   position: fixed;
   z-index: 10;
   width: 100%;
-  &-logo{
-    // margin-right: 176px;
+  &-logo {
+    width: 145px;
+    height: 45px;
+    position: relative;
+    background-image: url("../../images/logo.png");
+    background-repeat: no-repeat;
+    background-size: cover;
   }
 }
 

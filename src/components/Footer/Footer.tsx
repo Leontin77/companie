@@ -17,7 +17,9 @@ export const Footer = () => {
               Financial Refund Authority
             </div>
             <div>
-              <div className="footer__item">Как распознать обман?</div>
+              <Link className="footer__item" to="/#brokers">
+                Как распознать обман?
+              </Link>
               <Link className="footer__item" to="/review">
                 Отзывы
               </Link>
@@ -43,7 +45,9 @@ export const Footer = () => {
               <Link className="footer__item" to="/about">
                 Что такое FRA?
               </Link>
-              <div className="footer__item">Как работает FRA</div>
+              <Link className="footer__item" to="/#howItWork">
+                Как работает FRA
+              </Link>
               <Link className="footer__item" to="/#faq">
                 Частые вопросы
               </Link>
