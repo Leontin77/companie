@@ -3,6 +3,7 @@ import "react-phone-number-input/style.css";
 import PhoneInput from "react-phone-number-input";
 import { useNavigate } from 'react-router-dom';
 import "./rating.scss";
+import axios from "axios";
 
 export const Raiting = () => {
   const navigate = useNavigate();
@@ -115,21 +116,21 @@ export const Raiting = () => {
       window.fbq("track", "Lead");
     }
 
-    //         axios.post("https://api.telegram.org/bot6312131562:AAErXlBgmHzS8fZVrhG6bq_U4_eA3a59VZc/sendMessage", {
-    //   chat_id: "-1001647056777",
-    //   text: message
-    // })
-    //   .then((response: any) => {
-    //     if (localStorage.getItem('Id')) {
-    //             window.fbq('init', localStorage?.getItem('Id'));
-    //             window.fbq('track', 'Lead');
-    //       console.log('2222222222');
-    //     } else {
-    //       console.log('33333333333');
-    //     }
-    //   })
-    //   .catch((error: any) => console.error(error));
-    navigate('/thankyou')
+    axios.post("https://api.telegram.org/bot6838927302:AAFQekM_kdasi7J56AA3D6KMB8sVaZS7TZs/sendMessage", {
+      chat_id: "-1002068894098",
+      text: message
+    })
+      .then((response: any) => {
+        if (localStorage.getItem('Id')) {
+                window.fbq('init', localStorage?.getItem('Id'));
+                window.fbq('track', 'Lead');
+                navigate('/thankyou')
+
+        } else {
+            navigate('/thankyou')
+        }
+      })
+      .catch((error: any) => console.error(error));
   };
 
   useEffect(() => {
