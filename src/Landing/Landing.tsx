@@ -102,7 +102,7 @@ export const Landing = () => {
           </div>
         </div>
       </section>
-      <section className="aboutUs">
+      <section id="howItWork" className="aboutUs">
         <div className="container">
           <div className="aboutUs-content">
             <h2 className="aboutUs-title">
@@ -139,11 +139,11 @@ export const Landing = () => {
           </div>
         </div>
       </section>
-      <section className="aboutUs bg-white">
+      <section id="brokers" className="aboutUs bg-white">
         <div className="container">
           <div className="aboutUs-content">
             <h2 className="aboutUs-title">
-              КАК ПОНЯТЬ ЧТО ПОПАЛНА БРОКЕРА МОШЕННИКА?
+              КАК ПОНЯТЬ ЧТО ПОПАЛ НА БРОКЕРА МОШЕННИКА?
             </h2>
             <div className="aboutUs-subtitle">
               Опыт наших специалистов и тесные взаимосвязи с регуляторными
@@ -188,6 +188,7 @@ export const Landing = () => {
           </div>
         </div>
       </section>
+      <span id="quiz"></span>
       <Raiting/>
       <section className="ourAdvantages">
         <div className="container">
@@ -281,7 +282,7 @@ export const Landing = () => {
                   <img src={!openFAQ ? plusIcon : minusIcon} alt="" />
                   <span>Как функционирует FRA?</span>
                 </div>
-                {openFAQ && 
+                {openFAQ &&
                 <div className="description">
                   <div>
                     FRA – это подразделение Financial Conduct Authority (FCA –
@@ -331,10 +332,10 @@ export const Landing = () => {
           </div>
         </div>
       </section> */}
-      <FAQ/>
       <span id="faq"></span>
+      <FAQ/>
       <LeaveRequest/>
-            <Footer/>
+      <Footer/>
     </main>
   );
 };

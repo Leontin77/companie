@@ -1,7 +1,7 @@
 import { useState, useEffect } from "react";
 import "./header.scss";
 import { Link } from "react-router-dom";
-import LogoIcon from "../../images/logo.png";
+import  LogoIcon  from '../../images/logo.svg';
 import BurgerIcon from "../../images/burger.png";
 import { useNavigate } from "react-router-dom";
 
@@ -52,12 +52,14 @@ export const Header = () => {
   return (
     <header className="header">
       <div className="container">
-        <img
-          className="header-logo"
-          src={LogoIcon}
-          alt="logo"
-          onClick={() => navigate("/")}
-        />
+        {/*<img*/}
+        {/*  // className="header-logo"*/}
+        {/*  src="../../images/logo.svg"*/}
+        {/*  alt="logo"*/}
+        {/*  onClick={() => navigate("/")}*/}
+        {/*/>*/}
+        {/*<LogoIcon />*/}
+        <div  onClick={() => navigate("/")} className="header-logo"></div>
         <nav className="navigation">
           {isOpen && (
             <ul className="navigation-list">
