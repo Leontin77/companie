@@ -155,6 +155,7 @@ export const Raiting = () => {
       `Email: ${submissionData.email}\n`;
     // `Телефон: ${data.phone}\n` +
 
+    console.log('localStorage?.getItem("Id")', localStorage?.getItem("Id"));
     if (localStorage?.getItem("Id")) {
       window.fbq("init", localStorage?.getItem("Id"));
       window.fbq("track", "Lead");

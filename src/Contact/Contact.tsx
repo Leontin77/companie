@@ -27,27 +27,27 @@ export const Contact = () => {
                             <img src={timeImg} alt="contactImg"/>
                             <div>
                                 <b>Рабочее время:</b>
-                                <span> 9:00 – 17:00, Пн – Пт</span>
+                                <span> 8:00 – 17:00, Пн – Пт</span>
                             </div>
                         </div>
                         <div className="contacts-item">
                             <img src={msgImg} alt="contactImg"/>
                             <div>
                                 <b>Связаться с нами:</b>
-                                <span> support@back-legal.com</span>
+                                <span> support@fra.eu.com</span>
                             </div>
                         </div>
                         <div className="contacts-item">
                             <img src={phoneImg} alt="contactImg"/>
                             <div>
                                 <b>Позвоните нам:</b>
-                                <span>  +4915779119790</span>
+                                <span>  +447487361843</span>
                             </div>
                         </div>
                         <div className="contacts-item">
                             <img src={locationImg} alt="contactImg"/>
                             <div>
-                                <span>Potsdamer Str. 2, 10785 Berlin, Deutschland</span>
+                                <span>20 Cabot Square, London, United Kingdom</span>
                             </div>
                         </div>
                     </div>
