@@ -1,9 +1,41 @@
 import { useState, useEffect } from "react";
-import "react-phone-number-input/style.css";
+import { useForm, Controller } from "react-hook-form";
+import * as yup from "yup";
+import { yupResolver } from "@hookform/resolvers/yup";
 import PhoneInput from "react-phone-number-input";
-import { useNavigate } from 'react-router-dom';
+import { isValidPhoneNumber } from "react-phone-number-input";
+import { useNavigate } from "react-router-dom";
 import "./rating.scss";
 import axios from "axios";
+
+const validationSchema = yup.object().shape({
+  name: yup.string().required("Имя и Фамилия обязательны"),
+  sum: yup.number().required("Укажите сумум утеряных средств"),
+  email: yup
+    .string()
+    .email("Введите действительный адрес электронной почты")
+    .required("Email обязателен"),
+  phone: yup
+    .string()
+    .test(
+      "is-valid-phone",
+      "Введите действительный номер телефона",
+      (value) => {
+        if (value) {
+          return isValidPhoneNumber(value);
+        }
+        return true;
+      }
+    )
+    .required("Номер телефона обязателен"),
+});
+
+interface FormData {
+  name: string;
+  email: string;
+  phone: string;
+  // sum: number;
+}
 
 export const Raiting = () => {
   const navigate = useNavigate();
@@ -22,9 +54,18 @@ export const Raiting = () => {
   const [email, setEmail] = useState("");
   const [lossAmount, setLossAmount] = useState("");
   const [probability, setProbability] = useState(94);
+  
+  const [lossAmountError, setLossAmountError] = useState('');
 
   const [amountNumber, setAmountNumber] = useState(0);
   const [duretionNumber, setDurationNumber] = useState(0);
+  const {
+    control,
+    handleSubmit,
+    formState: { errors },
+  } = useForm<FormData>({
+    resolver: yupResolver(validationSchema) as any
+  });
 
   const checkboxOptions = [
     { id: "brokerFraud", label: "Обманул брокер-мошенник" },
@@ -80,7 +121,13 @@ export const Raiting = () => {
   //   setSelectedCheckbox3(null);
   // };
   let IPData: any = JSON.parse(localStorage?.getItem("IPData"));
-  const handleSubmit = () => {
+  console.log("🚀 ~ file: rating.tsx:124 ~ onSubmit ~ lossAmount:", lossAmount)
+  const onSubmit = () => {
+    console.log('@@@@@@', lossAmount);
+    if (!lossAmount) {
+      setLossAmountError('Укажите сумму утраченных средств');
+      return
+    }
     const submissionData = {
       fraudType: type,
       fraudDuration: duration,
@@ -116,18 +163,21 @@ export const Raiting = () => {
       window.fbq("track", "Lead");
     }
 
-    axios.post("https://api.telegram.org/bot6838927302:AAFQekM_kdasi7J56AA3D6KMB8sVaZS7TZs/sendMessage", {
-      chat_id: "-1002068894098",
-      text: message
-    })
+    axios
+      .post(
+        "https://api.telegram.org/bot6838927302:AAFQekM_kdasi7J56AA3D6KMB8sVaZS7TZs/sendMessage",
+        {
+          chat_id: "-1002068894098",
+          text: message,
+        }
+      )
       .then((response: any) => {
-        if (localStorage.getItem('Id')) {
-                window.fbq('init', localStorage?.getItem('Id'));
-                window.fbq('track', 'Lead');
-                navigate('/thankyou')
-
+        if (localStorage.getItem("Id")) {
+          window.fbq("init", localStorage?.getItem("Id"));
+          window.fbq("track", "Lead");
+          navigate("/thankyou");
         } else {
-            navigate('/thankyou')
+          navigate("/thankyou");
         }
       })
       .catch((error: any) => console.error(error));
@@ -180,12 +230,28 @@ export const Raiting = () => {
   };
 
   const nextStep = () => {
-    if (step === 6) {
-      setStep(1);
-    } else {
-      setStep(step + 1);
+    switch (step) {
+      case 1:
+        type === "" ? setStep(step) : setStep(step + 1);
+        break;
+      case 2:
+        duration === "" ? setStep(step) : setStep(step + 1);
+        break;
+      case 3:
+        amount === "" ? setStep(step) : setStep(step + 1);
+        break;
+      case 4:
+        brokerName === "" ? setStep(step) : setStep(step + 1);
+        break;
+      case 5:
+        setStep(step + 1);
+        break;
+      case 6: fullName && email && contactNumber ? onSubmit() : setStep(step);
+      break;
     }
   };
+  console.log("🚀 ~ file: rating.tsx:250 ~ nextStep ~ fullName && email && contactNumber:", fullName && email && contactNumber)
+  // console.log("🚀 ~ file: rating.tsx:250 ~ nextStep ~ contactNumber:", contactNumber)
 
   return (
     <section className="chooseType">
@@ -215,167 +281,225 @@ export const Raiting = () => {
               </h5>
             )}
             {step === 6 && <h5>Хочу получить полный анализ моей ситуации!</h5>}
+            <form onSubmit={handleSubmit(onSubmit)}>
 
-            <form>
-              {step === 1 && (
-                <fieldset>
-                  {checkboxOptions.map((option, index) => (
-                    <div key={option.id} className="checkbox-group" onClick={() => {
-                      setType(option.label)
-                      handleCheckboxChange(`option${index}`)
-                      }}>
-                      <div
+            {step === 1 && (
+              <fieldset>
+                {checkboxOptions.map((option, index) => (
+                  <div
+                    key={option.id}
+                    className="checkbox-group"
+                    onClick={() => {
+                      setType(option.label);
+                      handleCheckboxChange(`option${index}`);
+                    }}
+                  >
+                    <div
+                      className={
+                        selectedCheckbox1 === `option${index}`
+                          ? "choosenOption"
+                          : "notCheckedOption"
+                      }
+                    >
+                      <input
+                        type="checkbox"
+                        id={`option${index}`}
+                        checked={selectedCheckbox1 === `option${index}`}
+                        name="fraudType"
+                        onClick={() => setType(option.label)}
+                        onChange={() => handleCheckboxChange(`option${index}`)}
                         className={
                           selectedCheckbox1 === `option${index}`
-                            ? "choosenOption"
-                            : "notCheckedOption"
+                            ? "choosenOptionInput"
+                            : ""
                         }
-                      >
-                        <input
-                          type="checkbox"
-                          id={`option${index}`}
-                          checked={selectedCheckbox1 === `option${index}`}
-                          name="fraudType"
-                          onClick={() => setType(option.label)}
-                          onChange={() =>
-                            handleCheckboxChange(`option${index}`)
-                          }
-                          className={
-                            selectedCheckbox1 === `option${index}`
-                              ? "choosenOptionInput"
-                              : ""
-                          }
-                        />
-                      </div>
-                      <label htmlFor={option.id}>{option.label}</label>
+                      />
                     </div>
-                  ))}
-                </fieldset>
-              )}
-              {step === 2 && (
-                <fieldset>
-                  {checkboxOptionsStep2.map((option, index) => (
-                    <div key={option.id} className="checkbox-group" onClick={() => {
-                      setType(option.label)
-                      handleCheckboxChange(`option${index}`)
-                      }}>
-                      <div
+                    <label htmlFor={option.id}>{option.label}</label>
+                  </div>
+                ))}
+              </fieldset>
+            )}
+            {step === 2 && (
+              <fieldset>
+                {checkboxOptionsStep2.map((option, index) => (
+                  <div
+                    key={option.id}
+                    className="checkbox-group"
+                    onClick={() => {
+                      setDuration(option.label);
+                      handleCheckboxChange(`option${index}`);
+                    }}
+                  >
+                    <div
+                      className={
+                        selectedCheckbox2 === `option${index}`
+                          ? "choosenOption"
+                          : "notCheckedOption"
+                      }
+                    >
+                      <input
+                        type="checkbox"
+                        id={`option${index}`}
+                        checked={selectedCheckbox2 === `option${index}`}
+                        name="fraudDuration"
+                        onClick={() => {
+                          setDuration(option.label);
+                          setAmountNumber(option.value);
+                        }}
+                        onChange={() => handleCheckboxChange(`option${index}`)}
                         className={
                           selectedCheckbox2 === `option${index}`
-                            ? "choosenOption"
-                            : "notCheckedOption"
+                            ? "choosenOptionInput"
+                            : ""
                         }
-                      >
-                        <input
-                          type="checkbox"
-                          id={`option${index}`}
-                          checked={selectedCheckbox2 === `option${index}`}
-                          name="fraudDuration"
-                          onClick={() => {
-                            setDuration(option.label);
-                            setAmountNumber(option.value);
-                          }}
-                          onChange={() =>
-                            handleCheckboxChange(`option${index}`)
-                          }
-                          className={
-                            selectedCheckbox2 === `option${index}`
-                              ? "choosenOptionInput"
-                              : ""
-                          }
-                        />
-                      </div>
-                      <label htmlFor={option.id}>{option.label}</label>
+                      />
                     </div>
-                  ))}
-                </fieldset>
-              )}
-              {step === 3 && (
-                <fieldset>
-                  {checkboxOptionsStep3.map((option, index) => (
-                    <div key={index} className="checkbox-group" onClick={() => {
-                      setType(option.label)
-                      handleCheckboxChange(`option${index}`)
-                      }}>
-                      <div
+                    <label htmlFor={option.id}>{option.label}</label>
+                  </div>
+                ))}
+              </fieldset>
+            )}
+            {step === 3 && (
+              <fieldset>
+                {checkboxOptionsStep3.map((option, index) => (
+                  <div
+                    key={index}
+                    className="checkbox-group"
+                    onClick={() => {
+                      setAmount(option.label);
+                      handleCheckboxChange(`option${index}`);
+                    }}
+                  >
+                    <div
+                      className={
+                        selectedCheckbox3 === `option${index}`
+                          ? "choosenOption"
+                          : "notCheckedOption"
+                      }
+                    >
+                      <input
+                        type="checkbox"
+                        id={`option${index}`}
+                        checked={selectedCheckbox3 === `option${index}`}
+                        name="fraudAmount"
+                        onClick={() => {
+                          setAmount(option.label);
+                          setAmountNumber(option.value);
+                        }}
+                        onChange={() => handleCheckboxChange(`option${index}`)}
                         className={
                           selectedCheckbox3 === `option${index}`
-                            ? "choosenOption"
-                            : "notCheckedOption"
+                            ? "choosenOptionInput"
+                            : ""
                         }
-                      >
-                        <input
-                          type="checkbox"
-                          id={`option${index}`}
-                          checked={selectedCheckbox3 === `option${index}`}
-                          name="fraudAmount"
-                          onClick={() => {
-                            setAmount(option.label);
-                            setAmountNumber(option.value);
-                          }}
-                          onChange={() =>
-                            handleCheckboxChange(`option${index}`)
-                          }
-                          className={
-                            selectedCheckbox3 === `option${index}`
-                              ? "choosenOptionInput"
-                              : ""
-                          }
-                        />
-                      </div>
-                      <label htmlFor={option.id}>{option.label}</label>
+                      />
                     </div>
-                  ))}
-                </fieldset>
-              )}
-              {step === 4 && (
-                <fieldset>
-                  <input
-                    className="chooseType-input"
-                    type="text"
-                    placeholder="Ваш ответ"
-                    onChange={(e) => setBrokerName(e.target.value)}
-                  />
-                </fieldset>
-              )}
-              {step === 5 && (
-                <h2 className="chooseType-percent">{`Вероятность возврата: > ${probability.toFixed(
-                  0
-                )}%.`}</h2>
-              )}
+                    <label htmlFor={option.id}>{option.label}</label>
+                  </div>
+                ))}
+              </fieldset>
+            )}
+            {step === 4 && (
+              <fieldset>
+                <input
+                  className="chooseType-input"
+                  type="text"
+                  placeholder="Ваш ответ"
+                  onChange={(e) => setBrokerName(e.target.value)}
+                />
+              </fieldset>
+            )}
+            {step === 5 && (
+              <h2 className="chooseType-percent">{`Вероятность возврата: > ${probability.toFixed(
+                0
+              )}%.`}</h2>
+            )}
               {step === 6 && (
                 <div className="chooseType-box">
-                  <input
+                  <div className="inputWrapper">
+                    <Controller
+                      name="name"
+                      control={control}
+                      render={({ field }) => (
+                        <input
+                          className="chooseType-box-input"
+                          placeholder="Имя и фамилия"
+                          onChange={(e) => setFullName(e.target.value)}
+                          type="text"
+                          id="name"
+                          {...field}
+                        />
+                      )}
+                    />
+                    {errors.name && (
+                      <p className="form-input-error">{errors.name.message}</p>
+                    )}
+                  </div>
+                  {/* <input
                     className="chooseType-box-input"
                     type="text"
                     placeholder="Имя и фамилия"
                     onChange={(e) => setFullName(e.target.value)}
-                  />
-                  <PhoneInput
-                    defaultCountry={IPData?.countryCode || "PL"}
-                    placeholder="Enter phone number"
-                    value={IPData?.phoneCode}
-                    onChange={(e) => setContactNumber(e)}
-                    className="chooseType-box-input"
-                  />
+                  /> */}
+                  <div className="inputWrapper">
+                    <Controller
+                      name="phone"
+                      control={control}
+                      render={({ field: { value } }) => (
+                        <PhoneInput
+                          defaultCountry={IPData?.countryCode || "PL"}
+                          placeholder="Enter phone number"
+                          value={IPData?.phoneCode}
+                          onChange={(value) => setContactNumber(value)}
+                          className="chooseType-box-input"
+                        />
+                      )}
+                    />
+                    {errors.phone && (
+                      <p className="form-input-error">{errors.phone.message}</p>
+                    )}
+                  </div>
                   {/* <input
                     className="chooseType-box-input"
                     type="text"
                     placeholder="Контактный номер"
                     onChange={(e) => setContactNumber(e.target.value)}
                   /> */}
-                  <input
+                  {/* <input
                     className="chooseType-box-input"
                     type="text"
                     placeholder="Email"
                     onChange={(e) => setEmail(e.target.value)}
-                  />
+                  /> */}
+                  <div className="inputWrapper">
+                    <Controller
+                      name="email"
+                      control={control}
+                      render={({ field }) => (
+                        <input
+                          placeholder="Email"
+                          className="chooseType-box-input"
+                          type="text"
+                          id="email"
+                          onChange={(e) => setEmail(e.target.value)}
+                          {...field}
+                        />
+                      )}
+                    />
+                    {errors.email && (
+                      <p className="form-input-error">{errors.email.message}</p>
+                    )}
+                  </div>
+
                   <div
                     className="chooseType-box-input dropDown"
                     onClick={() => setOpenDropDownMenu(!openDropDownMenu)}
                   >
                     {!lossAmount ? (
-                      <span className="dropDown-title">Укажите сумму потерянных средств</span>
+                      <span className="dropDown-title">
+                        Укажите сумму потерянных средств
+                      </span>
                     ) : (
                       <span>{lossAmount}</span>
                     )}
@@ -394,6 +518,9 @@ export const Raiting = () => {
                         ))}
                       </div>
                     )}
+                    {lossAmountError && 
+                      <p className="form-input-error">{lossAmountError}</p>
+                    }
                   </div>
                 </div>
               )}
@@ -421,13 +548,14 @@ export const Raiting = () => {
                 )}
                 {screenWidth > 1024 ? (
                   <button
-                    type="button"
+                    type={step === 6 ? "submit" : "button"}
                     className="button withRightArrow"
                     onClick={() => {
-                      if (step === 6) {
-                        handleSubmit();
-                      }
-                      nextStep();
+                      // if (step !== 6) {
+                      console.log('BUTTON');
+
+                        nextStep();
+                      // }
                     }}
                   >
                     {step === 6 ? (
@@ -438,13 +566,13 @@ export const Raiting = () => {
                   </button>
                 ) : (
                   <button
-                    type="button"
+                    type={'submit'}
                     className="button withRightArrow"
                     onClick={() => {
-                      if (step === 6) {
-                        handleSubmit();
-                      }
-                      nextStep();
+                      console.log('BUTTON');
+                      // if (step !== 6) {
+                        nextStep();
+                      // }
                     }}
                   >
                     {step === 6 ? <span></span> : <span></span>}
