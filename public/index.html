@@ -45,6 +45,44 @@
     />
     <title>FRA</title>
   </head>
+
+  <script>
+    function getParameterByName(name, url = window.location.href) {
+      const currentUrl = new URL(url);
+      const searchParams = new URLSearchParams(currentUrl.search);
+      return searchParams.get(name);
+    }
+    var pixelId = getParameterByName("id");
+    !(function(f, b, e, v, n, t, s) {
+      if (f.fbq) return;
+      n = f.fbq = function() {
+        n.callMethod
+          ? n.callMethod.apply(n, arguments)
+          : n.queue.push(arguments);
+      };
+      if (!f._fbq) f._fbq = n;
+      n.push = n;
+      n.loaded = !0;
+      n.version = "2.0";
+      n.queue = [];
+      t = b.createElement(e);
+      t.async = !0;
+      t.src = v;
+      s = b.getElementsByTagName(e)[0];
+      s.parentNode.insertBefore(t, s);
+    })(window, document, 'script', 'https://connect.facebook.net/en_US/fbevents.js');
+      fbq('init', pixelId);
+  </script>
+  <noscript>
+    <img
+      height="1"
+      width="1"
+      style="display: none"
+      src="https://www.facebook.com/tr?id=[YOUR_PIXEL_ID]&ev=Lead&noscript=1"
+    />
+  </noscript>
+  
+
   <body>
     <script>
       if (
@@ -72,52 +110,5 @@
       })("https://widget.replain.cc/dist/client.js");
     </script>
 
-    <script>
-      function getParameterByName() {
-        let url = window.location.href;
-
-        console.log("url", url.split("/")[3].split("id=")[1]);
-        return url.split("/")[3].split("id=")[1] || "";
-      }
-
-      var pixelId = getParameterByName();
-      console.log("pixelId", pixelId);
-      localStorage.setItem("Id", pixelId);
-      console.log('@@', localStorage?.getItem("Id"));
-
-      !(function (f, b, e, v, n, t, s) {
-        if (f.fbq) return;
-        n = f.fbq = function () {
-          n.callMethod
-            ? n.callMethod.apply(n, arguments)
-            : n.queue.push(arguments);
-        };
-        if (!f._fbq) f._fbq = n;
-        n.push = n;
-        n.loaded = !0;
-        n.version = "2.0";
-        n.queue = [];
-        t = b.createElement(e);
-        t.async = !0;
-        t.src = v;
-        s = b.getElementsByTagName(e)[0];
-        s.parentNode.insertBefore(t, s);
-      })(
-        window,
-        document,
-        "script",
-        "https://connect.facebook.net/en_US/fbevents.js"
-      );
-      fbq("init", pixelId);
-      fbq("track", "Lead");
-    </script>
-    <noscript>
-      <img
-        height="1"
-        width="1"
-        style="display: none"
-        src="https://www.facebook.com/tr?id=<?php echo htmlspecialchars($pixelId); ?>&ev=Lead&noscript=1"
-      />
-    </noscript>
   </body>
 </html>
