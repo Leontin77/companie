@@ -29,7 +29,9 @@ export const Header = () => {
   }, [screenWidth]);
 
   const burgerClick = () => {
+    if (screenWidth < 1024) {
     setIsOpen((prev) => !prev);
+    }
   };
   const close = () => {
     if (screenWidth < 1024) {
@@ -39,15 +41,19 @@ export const Header = () => {
 
   useEffect(() => {
     const handleClickOutside = (event: any) => {
+    if (screenWidth < 1024) {
       if (isOpen && !document.querySelector('.navigation').contains(event.target)) {
         setIsOpen(false);
       }
     };
+  }
     document.addEventListener('mousedown', handleClickOutside);
     return () => {
       document.removeEventListener('mousedown', handleClickOutside);
     };
+    
   }, [isOpen]);
+
 
   return (
     <header className="header">

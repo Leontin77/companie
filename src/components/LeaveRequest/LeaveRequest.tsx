@@ -26,7 +26,7 @@ export const LeaveRequest = () => {
                           </div>
                       </div>
                   </div>
-                  <div className="subtitle">Внимание: не доверяйте специалистам, которые гарантируют вам 100% результат за 1-2 дня!</div>
+                  <div className="subtitle" id="formId">Внимание: не доверяйте специалистам, которые гарантируют вам 100% результат за 1-2 дня!</div>
               </div>
               <Form/>
           </div>

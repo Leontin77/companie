@@ -16,6 +16,13 @@ const gridContent = [
 ];
 
 export const CalculatorPage = () => {
+  const buttonClick = () => {
+    const element = document.getElementById('formId');
+    if (element) {
+      element.scrollIntoView({ behavior: "smooth", block: "start" });
+    }
+  }
+
   return (
     <main className="calculatorPage">
       {/* <Header /> */}
@@ -39,7 +46,8 @@ export const CalculatorPage = () => {
               text="Получить консультацию сейчас"
               width="100%"
               background="#701B45"
-            />
+              onClick={() => buttonClick()}
+              />
           </div>
         {/* </div> */}
       </div>

@@ -6,9 +6,10 @@ interface MainButtonProps {
   width?: string | number;
   background?: string;
   className?: string;
+  onClick?: () => void; 
 }
 
-export const MainButton: React.FC<MainButtonProps> = ({ text, width, background, className }) => {
+export const MainButton: React.FC<MainButtonProps> = ({ text, width, background, className, onClick }) => {
   const buttonStyle = {
     width: width,
     background: background,
@@ -16,7 +17,7 @@ export const MainButton: React.FC<MainButtonProps> = ({ text, width, background,
   };
 
   return (
-    <button className="button" style={buttonStyle}>
+    <button className="button" style={buttonStyle} onClick={onClick}>
       {text}
     </button>
   );

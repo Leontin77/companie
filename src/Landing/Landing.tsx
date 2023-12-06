@@ -48,6 +48,13 @@ export const Landing = () => {
     };
   }, []);
 
+  const buttonClick = () => {
+    const element = document.getElementById('formId');
+    if (element) {
+      element.scrollIntoView({ behavior: "smooth", block: "start" });
+    }
+  }
+
   const location = useLocation();
 
   useEffect(() => {
@@ -86,6 +93,7 @@ export const Landing = () => {
                 text="Оформить заявление на возврат денег!"
                 width={screenWidth > 1024 ? '650px' : '100%'}
                 background="#701b45"
+                onClick={() => buttonClick()}
               />
               <ul className="hero-help">
                 <li className="hero-help-item greenBorder">
