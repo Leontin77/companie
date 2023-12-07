@@ -15,6 +15,7 @@ import { About } from "About/About";
 import ReactPixel from "react-facebook-pixel";
 
 export default function App() {
+
   const getPixelIdFromUrl = () => {
     const searchParams = new URLSearchParams(window.location.search);
     return searchParams.get("id"); // змінна 'id' в URL
@@ -52,6 +53,7 @@ export default function App() {
       // Відправка події PageView
       ReactPixel.pageView();
     }
+
   }, []);
 
   return (

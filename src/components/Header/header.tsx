@@ -6,11 +6,20 @@ import BurgerIcon from "../../images/burger.png";
 import { useNavigate } from "react-router-dom";
 
 export const Header = () => {
+
   const [screenWidth, setScreenWidth] = useState(window.innerWidth);
   const [isOpen, setIsOpen] = useState(false);
   const navigate = useNavigate();
 
   useEffect(() => {
+    if (document.location.href.includes('thankyou')){
+      if (localStorage.getItem('pixID')) {
+        navigate(`/thankyou?pid=${localStorage.getItem('pixID')}`);
+
+      } else {
+        navigate(`/thankyou`);
+      }
+    }
     const handleResize = () => {
       setScreenWidth(window.innerWidth);
     };
