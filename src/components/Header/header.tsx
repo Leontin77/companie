@@ -1,6 +1,6 @@
 import { useState, useEffect } from "react";
 import "./header.scss";
-import { Link } from "react-router-dom";
+import { Link, useLocation } from "react-router-dom";
 import  LogoIcon  from '../../images/logo.svg';
 import BurgerIcon from "../../images/burger.png";
 import { useNavigate } from "react-router-dom";
@@ -10,16 +10,21 @@ export const Header = () => {
   const [screenWidth, setScreenWidth] = useState(window.innerWidth);
   const [isOpen, setIsOpen] = useState(false);
   const navigate = useNavigate();
-
+  // const location = useLocation();
+  // useEffect(() => {
+  //   if (window.fbq) {
+  //     window.fbq('track', 'Lead');
+  //   }
+  // }, [location]);
   useEffect(() => {
-    if (document.location.href.includes('thankyou')){
-      if (localStorage.getItem('pixID')) {
-        navigate(`/thankyou?pid=${localStorage.getItem('pixID')}`);
+    // if (document.location.href.includes('thankyou')){
+    //   if (localStorage.getItem('pixID')) {
+    //     navigate(`/thankyou?pid=${localStorage.getItem('pixID')}`);
 
-      } else {
-        navigate(`/thankyou`);
-      }
-    }
+    //   } else {
+    //     navigate(`/thankyou`);
+    //   }
+    // }
     const handleResize = () => {
       setScreenWidth(window.innerWidth);
     };

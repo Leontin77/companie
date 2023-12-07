@@ -61,7 +61,7 @@ export const Form = () => {
 
 
   const onSubmit = (data: FormData) => {
-    window.fbq(`track`, "Lead");
+    // window.fbq(`track`, "Lead");
     const message =
       `Новая заявка со страницы: ${window.location.href}\n\n` +
       "Данные формы: \n" +
@@ -89,8 +89,8 @@ export const Form = () => {
       )
       .then((response: any) => {
         if (pixID) {
-        //   navigate(`/thankyou?pid=${pixID}&rel`);
-        window.location.href = `${window.location.origin}/thankyou?pid=${pixID}&rel`;
+          navigate(`/thankyou?pid=${pixID}`);
+        // window.location.href = `${window.location.origin}/thankyou?pid=${pixID}&rel`;
         } else {
           navigate("/thankyou");
         }

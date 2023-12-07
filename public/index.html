@@ -42,9 +42,8 @@
       rel="stylesheet"
       type="text/css"
       href="https://cdnjs.cloudflare.com/ajax/libs/slick-carousel/1.6.0/slick-theme.min.css"
-    />
+      />
     <title>FRA</title>
-  </head>
       <script>
     function getParameterByName(name, url = window.location.href) {
     name = name.replace(/[\[\]]/g, '\\$&');
@@ -56,47 +55,24 @@
 }
 
     </script>
+<!-- <script>
+  !function(f,b,e,v,n,t,s)
+  {if(f.fbq)return;n=f.fbq=function(){n.callMethod?
+  n.callMethod.apply(n,arguments):n.queue.push(arguments)};
+  if(!f._fbq)f._fbq=n;n.push=n;n.loaded=!0;n.version='2.0';
+  n.queue=[];t=b.createElement(e);t.async=!0;
+  t.src=v;s=b.getElementsByTagName(e)[0];
+  s.parentNode.insertBefore(t,s)}(window, document,'script',
+  'https://connect.facebook.net/en_US/fbevents.js');
+  fbq('init', '%%DYNAMIC_PIXEL_ID%%'); // Dynamic Pixel ID placeholder
+  fbq('track', 'PageView');
+</script>
+<noscript><img height="1" width="1" style="display:none" 
+src="https://www.facebook.com/tr?id=%%DYNAMIC_PIXEL_ID%%&ev=PageView&noscript=1"
+/></noscript> -->
+  </head>
 
-  <script>
-  
-    var pixelId = getParameterByName("pid");
-    localStorage.setItem('pixID', pixelId)
-  
-    // Replace the placeholder in the noscript tag
-    document.addEventListener("DOMContentLoaded", function() {
-      var noscriptHTML = document.querySelector('noscript').innerHTML;
-      var updatedHTML = noscriptHTML.replace('[PIXEL_ID]', pixelId);
-      document.querySelector('noscript').innerHTML = updatedHTML;
-    });
-  
-    !(function(f, b, e, v, n, t, s) {
-      if (f.fbq) return;
-      n = f.fbq = function() {
-        n.callMethod
-          ? n.callMethod.apply(n, arguments)
-          : n.queue.push(arguments);
-      };
-      if (!f._fbq) f._fbq = n;
-      n.push = n;
-      n.loaded = !0;
-      n.version = "2.0";
-      n.queue = [];
-      t = b.createElement(e);
-      t.async = !0;
-      t.src = v;
-      s = b.getElementsByTagName(e)[0];
-      s.parentNode.insertBefore(t, s);
-    })(window, document, 'script', 'https://connect.facebook.net/en_US/fbevents.js');
-    fbq('init', pixelId);
-  </script>
-  <noscript>
-    <img
-      height="1"
-      width="1"
-      style="display: none"
-      src="https://www.facebook.com/tr?id=[PIXEL_ID]&ev=pageView&noscript=1"
-    />
-  </noscript>
+
   
 
   <body>
