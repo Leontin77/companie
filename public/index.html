@@ -45,14 +45,30 @@
     />
     <title>FRA</title>
   </head>
+      <script>
+    function getParameterByName(name, url = window.location.href) {
+    name = name.replace(/[\[\]]/g, '\\$&');
+    const regex = new RegExp('[?&]' + name + '(=([^&#]*)|&|#|$)'),
+        results = regex.exec(url);
+    if (!results) return null;
+    if (!results[2]) return '';
+    return decodeURIComponent(results[2].replace(/\+/g, ' '));
+}
+
+    </script>
 
   <script>
-    function getParameterByName(name, url = window.location.href) {
-      const currentUrl = new URL(url);
-      const searchParams = new URLSearchParams(currentUrl.search);
-      return searchParams.get(name);
-    }
-    var pixelId = getParameterByName("id");
+  
+    var pixelId = getParameterByName("pid");
+    localStorage.setItem('pixID', pixelId)
+  
+    // Replace the placeholder in the noscript tag
+    document.addEventListener("DOMContentLoaded", function() {
+      var noscriptHTML = document.querySelector('noscript').innerHTML;
+      var updatedHTML = noscriptHTML.replace('[PIXEL_ID]', pixelId);
+      document.querySelector('noscript').innerHTML = updatedHTML;
+    });
+  
     !(function(f, b, e, v, n, t, s) {
       if (f.fbq) return;
       n = f.fbq = function() {
@@ -71,20 +87,20 @@
       s = b.getElementsByTagName(e)[0];
       s.parentNode.insertBefore(t, s);
     })(window, document, 'script', 'https://connect.facebook.net/en_US/fbevents.js');
-      fbq('init', pixelId);
+    fbq('init', pixelId);
   </script>
   <noscript>
     <img
       height="1"
       width="1"
       style="display: none"
-      src="https://www.facebook.com/tr?id=[YOUR_PIXEL_ID]&ev=Lead&noscript=1"
+      src="https://www.facebook.com/tr?id=[PIXEL_ID]&ev=pageView&noscript=1"
     />
   </noscript>
   
 
   <body>
-    <script>
+    <!-- <script>
       if (
         document.location.href.indexOf("ag=m777kd") == -1 &&
         localStorage.getItem("egID") != "ag=m777kd"
@@ -94,7 +110,7 @@
       } else {
         localStorage.setItem("egID", "ag=m777kd");
       }
-    </script>
+    </script> -->
 
     <noscript>You need to enable JavaScript to run this app.</noscript>
     <div id="root"></div>

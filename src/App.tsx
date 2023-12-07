@@ -19,6 +19,11 @@ export default function App() {
     const searchParams = new URLSearchParams(window.location.search);
     return searchParams.get("id"); // змінна 'id' в URL
   };
+//   useEffect(() => {
+//     if (window.location.href.includes('&rel')) {
+//       window.location.href = window.location.href.split('&rel')[0]
+//     }
+// }, [window.location]);
   useEffect(() => {
     fetch("https://ipapi.co/json")
       .then((res) => res.json())
