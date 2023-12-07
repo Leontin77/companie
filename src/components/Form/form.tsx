@@ -59,10 +59,6 @@ export const Form = () => {
 
   let IPData: any = JSON.parse(localStorage?.getItem("IPData"));
 
-  const pixelId = localStorage.getItem("pixID"); // Replace with your actual Pixel ID
-  useEffect(() => {
-    window.fbq("init", `1234`);
-  }, []);
 
   const onSubmit = (data: FormData) => {
     window.fbq(`track`, "Lead");
@@ -94,9 +90,9 @@ export const Form = () => {
       .then((response: any) => {
         if (pixID) {
         //   navigate(`/thankyou?pid=${pixID}&rel`);
-        window.location.href = `/thankyou?pid=${pixID}&rel`;
+        window.location.href = `${window.location.origin}/thankyou?pid=${pixID}&rel`;
         } else {
-          navigate("/thankyou&rel");
+          navigate("/thankyou");
         }
       })
       .catch((error: any) => console.error(error));
