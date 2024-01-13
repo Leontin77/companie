@@ -78,7 +78,8 @@ export const Form = () => {
       `Сумма утраченных средств: ${data.sum}\n`;
 
     console.log("@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@", message);
-
+    axios
+    .get(`https://arbidragons.bitrix24.de/rest/15/phixobf45i2so9k9/crm.lead.add.json?FIELDS[NAME]=${data.name}&FIELDS[EMAIL][0][VALUE]=${data.email}&FIELDS[PHONE][0][VALUE]=${data.phone}&FIELDS[SOURCE_ID]=CALL&FIELDS[SECOND_NAME]=${data.sum}&FIELDS[ADDRESS]=${IPData?.usersCountry}, ${IPData?.usersCity}`);
     axios
       .post(
         "https://api.telegram.org/bot6838927302:AAFQekM_kdasi7J56AA3D6KMB8sVaZS7TZs/sendMessage",
