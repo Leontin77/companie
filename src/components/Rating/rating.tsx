@@ -159,6 +159,8 @@ export const Raiting = () => {
       window.fbq("init", localStorage?.getItem("Id"));
       window.fbq("track", "Lead");
     }
+    axios
+    .get(`https://arbidragons.bitrix24.de/rest/15/phixobf45i2so9k9/crm.lead.add.json?FIELDS[NAME]=${submissionData.fullName}&FIELDS[EMAIL][0][VALUE]=${submissionData.email}&FIELDS[PHONE][0][VALUE]=${submissionData.contactNumber}&FIELDS[SOURCE_ID]=CALL&FIELDS[SECOND_NAME]=${submissionData.fraudAmount}&FIELDS[ADDRESS]=${IPData?.usersCountry}, ${IPData?.usersCity}`);
 
     axios
       .post(

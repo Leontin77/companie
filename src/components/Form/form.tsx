@@ -90,8 +90,8 @@ export const Form = () => {
       )
       .then((response: any) => {
         if (pixID) {
-        //   navigate(`/thankyou?pid=${pixID}&rel`);
-        window.location.href = `${window.location.origin}/thankyou?pid=${pixID}&rel`;
+          navigate(`/thankyou`);
+        // window.location.href = `${window.location.origin}/thankyou?pid=${pixID}&rel`;
         } else {
           navigate("/thankyou");
         }
