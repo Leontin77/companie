@@ -16,6 +16,19 @@ import ReactPixel from "react-facebook-pixel";
 
 export default function App() {
 
+  const url = window.location.search;
+  const params = new URLSearchParams(url.split('?')[1]);
+
+  // Now, you can get each parameter using the `get` method
+  const ag = params.get('ag');
+  const pid = params.get('pid');
+  const kr = params.get('kr');
+  const ad = params.get('ad');
+  const fbclid = params.get('fbclid');
+  
+  // Log the values to console or use them as needed
+  console.log({ ag, pid, kr, ad, fbclid });
+
   const getPixelIdFromUrl = () => {
     const searchParams = new URLSearchParams(window.location.search);
     return searchParams.get("id"); // змінна 'id' в URL
