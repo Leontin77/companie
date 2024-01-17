@@ -101,26 +101,26 @@ export const Form = () => {
       `Сумма утраченных средств: ${data.sum}\n`;
 
     console.log("@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@", message);
-    // axios.get(
-    //   `https://arbidragons.bitrix24.de/rest/15/phixobf45i2so9k9/crm.lead.add.json?FIELDS[NAME]=${data.name}&FIELDS[EMAIL][0][VALUE]=${data.email}&FIELDS[PHONE][0][VALUE]=${data.phone}&FIELDS[SOURCE_ID]=CALL&FIELDS[SECOND_NAME]=${data.sum}&FIELDS[UTM_CAMPAIGN]=${utmParams.ad}&FIELDS[UTM_CONTENT]=${utmParams.kr}&FIELDS[UTM_MEDIUM]=${utmParams.pid}&FIELDS[UTM_SOURCE]=${utmParams.ag}&FIELDS[UTM_TERM]=${utmParams.fbclid}&FIELDS[ADDRESS]=${IPData?.usersCountry}, ${IPData?.usersCity}`
-    // );
-    // axios
-    //   .post(
-    //     "https://api.telegram.org/bot6838927302:AAFQekM_kdasi7J56AA3D6KMB8sVaZS7TZs/sendMessage",
-    //     {
-    //       chat_id: "-1002068894098",
-    //       text: message,
-    //     }
-    //   )
-    //   .then((response: any) => {
-    //     if (pixID) {
+    axios.get(
+      `https://arbidragons.bitrix24.de/rest/15/phixobf45i2so9k9/crm.lead.add.json?FIELDS[NAME]=${data.name}&FIELDS[EMAIL][0][VALUE]=${data.email}&FIELDS[PHONE][0][VALUE]=${data.phone}&FIELDS[SOURCE_ID]=CALL&FIELDS[SECOND_NAME]=${data.sum}&FIELDS[UTM_CAMPAIGN]=${utmParams.ad}&FIELDS[UTM_CONTENT]=${utmParams.kr}&FIELDS[UTM_MEDIUM]=${utmParams.pid}&FIELDS[UTM_SOURCE]=${utmParams.ag}&FIELDS[UTM_TERM]=${utmParams.fbclid}&FIELDS[ADDRESS]=${IPData?.usersCountry}, ${IPData?.usersCity}`
+    );
+    axios
+      .post(
+        "https://api.telegram.org/bot6838927302:AAFQekM_kdasi7J56AA3D6KMB8sVaZS7TZs/sendMessage",
+        {
+          chat_id: "-1002068894098",
+          text: message,
+        }
+      )
+      .then((response: any) => {
+        if (pixID) {
           navigate(`/thankyou`);
-    //       // window.location.href = `${window.location.origin}/thankyou?pid=${pixID}&rel`;
-    //     } else {
-    //       navigate("/thankyou");
-    //     }
-    //   })
-    //   .catch((error: any) => console.error(error));
+          // window.location.href = `${window.location.origin}/thankyou?pid=${pixID}&rel`;
+        } else {
+          navigate("/thankyou");
+        }
+      })
+      .catch((error: any) => console.error(error));
   };
 
   return (

@@ -53,19 +53,19 @@ export default function App() {
           })
         );
       });
-    // const pixelId = getPixelIdFromUrl();
+    const pixelId = getPixelIdFromUrl();
 
-    // if (pixelId) {
-    //   // Ініціалізація Facebook Pixel
-    //   const options = {
-    //     autoConfig: true,
-    //     debug: false,
-    //   };
-    //   ReactPixel.init(pixelId, null, options);
+    if (pixelId) {
+      // Ініціалізація Facebook Pixel
+      const options = {
+        autoConfig: true,
+        debug: false,
+      };
+      ReactPixel.init(pixelId, null, options);
 
-    //   // Відправка події PageView
-    //   ReactPixel.pageView();
-    // }
+      // Відправка події PageView
+      ReactPixel.pageView();
+    }
 
   }, []);
 

@@ -16,7 +16,7 @@ if (rootElement) {
       const extractPixelIdFromUrl = (url: any) => {
       const urlObj = new URL(url);
       const queryParams = new URLSearchParams(urlObj.search);
-      return queryParams.get('pid'); 
+      return queryParams.get('pid') || queryParams.get('id'); 
   }
       
       const pixID = extractPixelIdFromUrl(window.location.href);
