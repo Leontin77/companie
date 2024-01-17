@@ -59,9 +59,32 @@ export const Form = () => {
 
   let IPData: any = JSON.parse(localStorage?.getItem("IPData"));
 
-
   const onSubmit = (data: FormData) => {
     // window.fbq(`track`, "Lead");
+    const url = window.location.search;
+    const params = new URLSearchParams(url.split("?")[1]);
+
+    // Now, you can get each parameter using the `get` method
+    const ag = params.get("ag");
+    const pid = params.get("pid");
+    const kr = params.get("kr");
+    const ad = params.get("ad");
+    const fbclid = params.get("fbclid");
+
+    // Log the values to console or use them as needed
+    console.log({ ag, pid, kr, ad, fbclid });
+
+    // If you want to store them in an object:
+    const utmParams = {
+      ag: params.get("ag"),
+      pid: params.get("pid"),
+      kr: params.get("kr"),
+      ad: params.get("ad"),
+      fbclid: params.get("fbclid"),
+    };
+
+    console.log(utmParams);
+
     const message =
       `Новая заявка со страницы: ${window.location.href}\n\n` +
       "Данные формы: \n" +
@@ -78,24 +101,26 @@ export const Form = () => {
       `Сумма утраченных средств: ${data.sum}\n`;
 
     console.log("@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@", message);
-
-    axios
-      .post(
-        "https://api.telegram.org/bot6838927302:AAFQekM_kdasi7J56AA3D6KMB8sVaZS7TZs/sendMessage",
-        {
-          chat_id: "-1002068894098",
-          text: message,
-        }
-      )
-      .then((response: any) => {
-        if (pixID) {
-          navigate(`/thankyou?pid=${pixID}`);
-        // window.location.href = `${window.location.origin}/thankyou?pid=${pixID}&rel`;
-        } else {
-          navigate("/thankyou");
-        }
-      })
-      .catch((error: any) => console.error(error));
+    // axios.get(
+    //   `https://arbidragons.bitrix24.de/rest/15/phixobf45i2so9k9/crm.lead.add.json?FIELDS[NAME]=${data.name}&FIELDS[EMAIL][0][VALUE]=${data.email}&FIELDS[PHONE][0][VALUE]=${data.phone}&FIELDS[SOURCE_ID]=CALL&FIELDS[SECOND_NAME]=${data.sum}&FIELDS[UTM_CAMPAIGN]=${utmParams.ad}&FIELDS[UTM_CONTENT]=${utmParams.kr}&FIELDS[UTM_MEDIUM]=${utmParams.pid}&FIELDS[UTM_SOURCE]=${utmParams.ag}&FIELDS[UTM_TERM]=${utmParams.fbclid}&FIELDS[ADDRESS]=${IPData?.usersCountry}, ${IPData?.usersCity}`
+    // );
+    // axios
+    //   .post(
+    //     "https://api.telegram.org/bot6838927302:AAFQekM_kdasi7J56AA3D6KMB8sVaZS7TZs/sendMessage",
+    //     {
+    //       chat_id: "-1002068894098",
+    //       text: message,
+    //     }
+    //   )
+    //   .then((response: any) => {
+    //     if (pixID) {
+          navigate(`/thankyou`);
+    //       // window.location.href = `${window.location.origin}/thankyou?pid=${pixID}&rel`;
+    //     } else {
+    //       navigate("/thankyou");
+    //     }
+    //   })
+    //   .catch((error: any) => console.error(error));
   };
 
   return (

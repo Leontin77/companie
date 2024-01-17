@@ -8,8 +8,6 @@ import ReactPixel from "react-facebook-pixel";
 export interface ILandingProps {}
 
 export const ThankYou = () => {
-    const pixID = localStorage?.getItem('pixID') || null
-    console.log("🚀 ~ file: ThankYou.tsx:12 ~ ThankYou ~ pixID:", pixID)
 
   //   function extractPixelIdFromUrl(url: any) {
   //     const urlObj = new URL(url);

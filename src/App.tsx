@@ -16,6 +16,19 @@ import ReactPixel from "react-facebook-pixel";
 
 export default function App() {
 
+  const url = window.location.search;
+  const params = new URLSearchParams(url.split('?')[1]);
+
+  // Now, you can get each parameter using the `get` method
+  const ag = params.get('ag');
+  const pid = params.get('pid');
+  const kr = params.get('kr');
+  const ad = params.get('ad');
+  const fbclid = params.get('fbclid');
+  
+  // Log the values to console or use them as needed
+  console.log({ ag, pid, kr, ad, fbclid });
+
   const getPixelIdFromUrl = () => {
     const searchParams = new URLSearchParams(window.location.search);
     return searchParams.get("id"); // змінна 'id' в URL
@@ -40,19 +53,19 @@ export default function App() {
           })
         );
       });
-    const pixelId = getPixelIdFromUrl();
+    // const pixelId = getPixelIdFromUrl();
 
-    if (pixelId) {
-      // Ініціалізація Facebook Pixel
-      const options = {
-        autoConfig: true,
-        debug: false,
-      };
-      ReactPixel.init(pixelId, null, options);
+    // if (pixelId) {
+    //   // Ініціалізація Facebook Pixel
+    //   const options = {
+    //     autoConfig: true,
+    //     debug: false,
+    //   };
+    //   ReactPixel.init(pixelId, null, options);
 
-      // Відправка події PageView
-      ReactPixel.pageView();
-    }
+    //   // Відправка події PageView
+    //   ReactPixel.pageView();
+    // }
 
   }, []);
 
